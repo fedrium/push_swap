@@ -1,4 +1,4 @@
-SRCS		= main.c misc.c pusher.c
+SRCS		= main.c misc.c pusher.c pusher2.c checker.c solver.c
 
 OBJS		= $(SRCS:.c=.o)
 

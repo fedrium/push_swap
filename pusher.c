@@ -11,79 +11,83 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	sa(int *sta)
+#include <stdio.h>
+void	sa(t_stacks *stacks)
 {
 	char	temp;
 	int		len;
 
-	temp = sta[0];
-	sta[0] = sta[1];
-	sta[1] = temp;
+	temp = stacks->sta[0];
+	stacks->sta[0] = stacks->sta[1];
+	stacks->sta[1] = temp;
 }
 
-void	sb(int *stb)
+void	sb(t_stacks *stacks)
 {
 	char	temp;
 	int		len;
 
-	temp = stb[0];
-	stb[0] = stb[1];
-	stb[1] = temp;
+	temp = stacks->stb[0];
+	stacks->stb[0] = stacks->stb[1];
+	stacks->stb[1] = temp;
 }
 
-void	ss(int *sta, int *stb)
+void	ss(t_stacks *stacks)
 {
-	sa(sta);
-	sb(stb);
+	sa(stacks);
+	sb(stacks);
 }
 
-void 	pa(int *sta, int *stb, int argc)
+void 	pa(t_stacks *stacks)
 {
 	int	temp2;
 	int	temp1;
 	int	i;
 
-	i = 0;
-	temp1 = stb[0];
-	if (stb[0] != 0)
+	i = stacks->anum;
+	temp1 = stacks->stb[0];
+	if (stacks->stb[0] != 0)
 	{	
-		while (i < argc)
+		while (i > 0)
 		{
-			temp2 = sta[i];
-			sta[i] = temp1;
-			i++;
+			stacks->sta[i] = stacks->sta[i - 1];
+			i--;
 		}
+		stacks->anum++;
 		i = 0;
-		while (i < argc - 1)
+		while (i < stacks->bnum)
 		{
-			stb[i] = stb[i + 1];
+			stacks->stb[i] = stacks->stb[i + 1];
 			i++;
 		}
+		stacks->bnum--;
+		stacks->sta[0] = temp1;
 	}
 }
 
-void 	pb(int *sta, int *stb, int argc)
+void 	pb(t_stacks *stacks)
 {
 	int	temp2;
 	int	temp1;
 	int	i;
 
-	i = 0;
-	temp1 = sta[0];
-	if (sta[0] != 0)
+	i = stacks->bnum;
+	temp1 = stacks->sta[0];
+	if (stacks->sta[0] != 0)
 	{	
-		while (i < argc)
+		while (i > 0)
 		{
-			temp2 = stb[i];
-			stb[i] = temp1;
-			i++;
+			stacks->stb[i] = stacks->stb[i - 1];
+			i--;
 		}
+		stacks->bnum++;
 		i = 0;
-		while (i < argc - 1)
+		while (i < stacks->anum)
 		{
-			sta[i] = sta[i + 1];
+			stacks->sta[i] = stacks->sta[i + 1];
 			i++;
 		}
+		stacks->anum--;
+		stacks->stb[0] = temp1;
 	}
 }

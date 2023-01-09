@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -47,4 +47,12 @@ int	ft_atoi(char *str)
 	if (neg % 2 == 1)
 		return (nbr * -1);
 	return (nbr);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (0);
+	else
+		return (1);
 }
