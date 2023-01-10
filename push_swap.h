@@ -21,6 +21,7 @@ typedef struct s_stacks {
 	int *stb;
 	int anum;
 	int bnum;
+	int	median;
 }				t_stacks;
 
 int		ft_strlen(char *str);
@@ -39,5 +40,7 @@ int		ft_isdigit(int c);
 int		order_check(t_stacks *stacks);
 int		solve_check(t_stacks *stacks);
 void	three_swap_a(t_stacks *stacks);
+void	median_finder_a(t_stacks *stacks);
+void	seperator_a(t_stacks *stacks);
 
 #endif

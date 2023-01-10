@@ -50,7 +50,7 @@ int	main(int argc, char *argv[])
 		write(1, "Error, Gay in Progress!\n", 24);
 		return (1);
 	}
-	three_swap_a(&stacks);
+	seperator_a(&stacks);
 	while (i < argc)
 	{
 		printf("sta: %i   ", stacks.sta[i]);
