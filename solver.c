@@ -44,7 +44,7 @@ void	seperator_a(t_stacks *stacks)
 	median_finder_a(stacks);
 	while (stacks->anum >= 3 && i < stacks->anum)
 	{
-		if (stacks->sta[0] >= stacks->median)
+		if (stacks->sta[0] > stacks->median)
 			ra(stacks);
 		else
 			pb(stacks);

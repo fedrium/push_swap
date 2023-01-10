@@ -46,7 +46,7 @@ void 	pa(t_stacks *stacks)
 
 	i = stacks->anum;
 	temp1 = stacks->stb[0];
-	if (stacks->stb[0] != 0)
+	if (stacks->stb != 0)
 	{	
 		while (i > 0)
 		{
@@ -73,7 +73,7 @@ void 	pb(t_stacks *stacks)
 
 	i = stacks->bnum;
 	temp1 = stacks->sta[0];
-	if (stacks->sta[0] != 0)
+	if (stacks->sta != 0)
 	{	
 		while (i > 0)
 		{

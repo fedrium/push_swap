@@ -51,7 +51,7 @@ int	ft_atoi(char *str)
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
+	if (c >= 48 && c <= 57 || c == 45)
 		return (0);
 	else
 		return (1);
