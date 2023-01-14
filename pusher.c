@@ -38,6 +38,7 @@ void	ss(t_stacks *stacks)
 	sb(stacks);
 }
 
+
 void 	pa(t_stacks *stacks)
 {
 	int	temp2;

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bocal <bocal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:33:01 by bocal             #+#    #+#             */
-/*   Updated: 2023/01/07 17:13:33 by bocal            ###   ########.fr       */
+/*   Updated: 2023/01/14 16:48:30 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdio.h>
-int	converter(int *sta, int argc, char **argv)
+int	converter(t_block *sta, int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -28,7 +28,8 @@ int	converter(int *sta, int argc, char **argv)
 				return (1);
 			j++;
 		}
-		sta[i - 1] = ft_atoi(argv[i]);
+		sta[i - 1].parti = ft_atoi(argv[i]);
+		sta[i - 1].n = 0;
 		i++;
 	}
 	return (0);
@@ -37,24 +38,26 @@ int	converter(int *sta, int argc, char **argv)
 int	main(int argc, char *argv[])
 {
 	t_stacks stacks;
+	t_block *sta;
+	t_block *stb;
 	int i;
-
 	i = 0;
-	stacks.sta = malloc(sizeof(int) * argc);
-	stacks.stb = malloc(sizeof(int) * argc);
+	sta = malloc(sizeof(t_block) * argc);
+	stb = malloc(sizeof(t_block) * argc);
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
-	if (converter(stacks.sta, argc, argv) == 1 ||
-		order_check(&stacks) == 1)
+	if (converter(sta, argc, argv) || 
+		order_check(sta, argc) == 1)
 	{
 		write(1, "Error, Gay in Progress!\n", 24);
 		return (1);
 	}
-	seperator_a(&stacks);
+	
 	while (i < argc)
 	{
-		printf("sta: %i   ", stacks.sta[i]);
-		printf("stb: %i\n", stacks.stb[i]);
+		printf("sta: %i   ", sta[i].parti);
+		printf("n: %i   \n", sta[i].n);
+		// printf("stb: %i\n", stacks.stb[i]);
 		i++;
 	}
 	// printf("next\n");

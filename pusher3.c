@@ -3,18 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   pusher3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bocal <bocal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:07:06 by bocal             #+#    #+#             */
-/*   Updated: 2023/01/07 16:50:07 by bocal            ###   ########.fr       */
+/*   Updated: 2023/01/11 17:31:29 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "push_swap.h"
 
-void	rrr(t_stacks *stacks);
-{
-	rra(stacks);
-	rrb(stacks);
-}
 
