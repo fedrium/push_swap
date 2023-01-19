@@ -31,7 +31,7 @@ typedef struct s_block {
 
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
-void	sa(t_stacks *stacks);
+void	sa(t_block *sta);
 void	sb(t_stacks *stacks);
 void	ss(t_stacks *stacks);
 void 	pb(t_stacks *stacks);

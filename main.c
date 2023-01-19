@@ -52,7 +52,7 @@ int	main(int argc, char *argv[])
 		write(1, "Error, Gay in Progress!\n", 24);
 		return (1);
 	}
-	
+	sa(sta);
 	while (i < argc)
 	{
 		printf("sta: %i   ", sta[i].parti);
