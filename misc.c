@@ -56,3 +56,27 @@ int	ft_isdigit(int c)
 	else
 		return (1);
 }
+
+int	median_finder(t_block *sta, t_stacks stacks)
+{
+	int	i;
+
+	i = 0;
+	int	temp[stacks.anum];
+	int	temptwo;
+	while (sta[i].parti != '\0' || sta[i] == 0)
+	{
+		temp[i] = sta[i].parti;
+		i++;
+	}
+	i = 0;
+	while (sta[i].parti != '\0')
+	{
+		if (sta[i] < sta[i + 1])
+		{
+			temptwo = sta[i];
+			sta[i] = sta[i + 1];
+			sta[i] = temp;
+		} 
+	}
+}

@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdio.h>
-int	converter(t_block *sta, int argc, char **argv)
+int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,7 @@ int	converter(t_block *sta, int argc, char **argv)
 		sta[i - 1].n = 0;
 		i++;
 	}
+	stacks->anum = i;
 	return (0);
 }
 
@@ -46,20 +47,20 @@ int	main(int argc, char *argv[])
 	stb = malloc(sizeof(t_block) * argc);
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
-	if (converter(sta, argc, argv) || 
+	if (converter(sta, argc, argv, &stacks) || 
 		order_check(sta, argc) == 1)
 	{
 		write(1, "Error, Gay in Progress!\n", 24);
 		return (1);
 	}
-	sa(sta);
-	while (i < argc)
-	{
-		printf("sta: %i   ", sta[i].parti);
-		printf("n: %i   \n", sta[i].n);
-		// printf("stb: %i\n", stacks.stb[i]);
-		i++;
-	}
+	median_finder(sta, stacks);
+	// while (i < argc)
+	// {
+	// 	printf("sta: %i   ", sta[i].parti);
+	// 	// printf("n: %i   \n", sta[i].n);
+	// 	printf("stb: %i \n", stb[i].parti);
+	// 	i++;
+	// }
 	// printf("next\n");
 	// pa(&stacks);
 	// i = 0;

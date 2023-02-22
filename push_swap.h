@@ -32,20 +32,21 @@ typedef struct s_block {
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
 void	sa(t_block *sta);
-void	sb(t_stacks *stacks);
-void	ss(t_stacks *stacks);
-void 	pb(t_stacks *stacks);
-void 	pa(t_stacks *stacks);
-void	ra(t_stacks *stacks);
-void	rb(t_stacks *stacks);
-void	rr(t_stacks *stacks);
-void	rra(t_stacks *stacks);
-void	rrb(t_stacks *stacks);
+void	sb(t_block *stb);
+void	ss(t_block *sta, t_block *stb);
+void 	pb(t_block *sta, t_block *stb, t_stacks *stacks);
+void 	pa(t_block *sta, t_block *stb, t_stacks *stacks);
+void	ra(t_block *sta, t_stacks *stacks);
+void	rb(t_block *stb, t_stacks *stacks);
+void	rr(t_block *sta, t_block *stb, t_stacks *stacks);
+void	rra(t_block *sta, t_stacks *stacks);
+// void	rrb(t_stacks *stacks);
 int		ft_isdigit(int c);
 int		order_check(t_block *sta, int argc);
 int		solve_check(t_stacks *stacks);
 void	three_swap_a(t_stacks *stacks);
 void	median_finder_a(t_stacks *stacks);
 void	seperator_a(t_stacks *stacks);
+int	median_finder(t_block *sta, t_stacks stacks);
 
 #endif

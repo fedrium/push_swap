@@ -12,68 +12,68 @@
 
 #include "push_swap.h"
 #include <stdio.h>
-// void	ra(t_stacks *stacks)
-// {
-// 	int	i;
-// 	int	temp;
+void	ra(t_block *sta, t_stacks *stacks)
+{
+	int	temp;
+	int	i;
 
-// 	i = 0;
-// 	temp = stacks->sta[0];
-// 	while (i < stacks->anum)
-// 	{
-// 		stacks->sta[i] = stacks->sta[i + 1];
-// 		i++;
-// 	}
-// 	stacks->sta[i - 1] = temp;
-// }
+	i = 0;
+	temp = sta[0].parti;
+	while (i < stacks->anum - 1)
+	{
+		sta[i].parti = sta[i + 1].parti;
+		i++;
+	}
+	sta[i - 1].parti = temp;
+}
 
-// void	rb(t_stacks *stacks)
-// {
-// 	int	i;
-// 	int	temp;
+void	rb(t_block *stb, t_stacks *stacks)
+{
+	int	temp;
+	int	i;
 
-// 	i = 0;
-// 	temp = stacks->stb[0];
-// 	while (i < stacks->bnum)
-// 	{
-// 		stacks->stb[i] = stacks->stb[i + 1];
-// 		i++;
-// 	}
-// 	stacks->stb[i - 1] = temp;
-// }
+	i = 0;
+	temp = stb[0].parti;
+	while (i < stacks->bnum - 1)
+	{
+		stb[i].parti = stb[i + 1].parti;
+		i++;
+	}
+	stb[i - 1].parti = temp;
+}
 
-// void	rr(t_stacks *stacks)
-// {
-// 	ra(stacks);
-// 	rb(stacks);
-// }
+void	rr(t_block *sta, t_block *stb, t_stacks *stacks)
+{
+	ra(sta, stacks);
+	rb(stb, stacks);
+}
 
-// void	rra(t_stacks *stacks)
-// {
-// 	int	i;
-// 	int	temp;
+void	rra(t_block *sta, t_stacks *stacks)
+{
+	int	i;
+	int	temp;
 
-// 	i = stacks->anum - 1;
-// 	temp = stacks->sta[i];
-// 	while (i > 0)
-// 	{
-// 		stacks->sta[i] = stacks->sta[i - 1];
-// 		i--;
-// 	}
-// 	stacks->sta[i] = temp;
-// }
+	i = stacks->anum - 2;
+	temp = sta[i].parti;
+	while (i > 0)
+	{
+		sta[i].parti = sta[i - 1].parti;
+		i--;
+	}
+	sta[i].parti = temp;
+}
 
-// void	rrb(t_stacks *stacks)
-// {
-// 	int	i;
-// 	int	temp;
+void	rrb(t_block *stb, t_stacks *stacks)
+{
+	int	i;
+	int	temp;
 
-// 	i = stacks->bnum - 1;
-// 	temp = stacks->stb[i];
-// 	while (i > 0)
-// 	{
-// 		stacks->stb[i] = stacks->stb[i - 1];
-// 		i--;
-// 	}
-// 	stacks->stb[i] = temp;
-// }
+	i = stacks->bnum - 2;
+	temp = stb[i].parti;
+	while (i > 0)
+	{
+		stb[i].parti = stb[i - 1].parti;
+		i--;
+	}
+	stb[i].parti = temp;
+}

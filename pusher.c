@@ -22,7 +22,7 @@ void	sa(t_block *sta)
 	sta[1].parti = temp;
 }
 
-void	sb(t_stacks *stb)
+void	sb(t_block *stb)
 {
 	char	temp;
 	int		len;
@@ -39,56 +39,54 @@ void	ss(t_block *sta, t_block *stb)
 }
 
 
-// void 	pa(t_stacks *stacks)
-// {
-// 	int	temp2;
-// 	int	temp1;
-// 	int	i;
-
-// 	i = stacks->anum;
-// 	temp1 = stacks->stb[0];
-// 	if (stacks->stb != 0)
-// 	{	
-// 		while (i > 0)
-// 		{
-// 			stacks->sta[i] = stacks->sta[i - 1];
-// 			i--;
-// 		}
-// 		stacks->anum++;
-// 		i = 0;
-// 		while (i < stacks->bnum)
-// 		{
-// 			stacks->stb[i] = stacks->stb[i + 1];
-// 			i++;
-// 		}
-// 		stacks->bnum--;
-// 		stacks->sta[0] = temp1;
-// 	}
-// }
-
-void 	pb(t_block *sta, t_block *stb)
+void 	pa(t_block *sta, t_block *stb, t_stacks *stacks)
 {
-	int	temp2;
+	int	temp1;
+	int	i;
+
+	i = stacks->anum;
+	temp1 = stb[0].parti;
+	if (stb != 0)
+	{	
+		while (i > 0)
+		{
+			sta[i].parti = sta[i - 1].parti;
+			i--;
+		}
+		stacks->anum++;
+		i = 0;
+		while (i < stacks->bnum)
+		{
+			stb[i].parti = stb[i + 1].parti;
+			i++;
+		}
+		stacks->bnum--;
+		sta[0].parti = temp1;
+	}
+}
+
+void 	pb(t_block *sta, t_block *stb, t_stacks *stacks)
+{
 	int	temp1;
 	int	i;
 
 	i = stacks->bnum;
-	temp1 = sta[0]->parti;
-	if (stacks->sta != 0)
+	temp1 = sta[0].parti;
+	if (sta != 0)
 	{	
 		while (i > 0)
 		{
-			stacks->stb[i] = stacks->stb[i - 1];
+			stb[i].parti = stb[i - 1].parti;
 			i--;
 		}
 		stacks->bnum++;
 		i = 0;
 		while (i < stacks->anum)
 		{
-			stacks->sta[i] = stacks->sta[i + 1];
+			sta[i].parti = sta[i + 1].parti;
 			i++;
 		}
 		stacks->anum--;
-		stacks->stb[0] = temp1;
+		stb[0].parti = temp1;
 	}
 }
