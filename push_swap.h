@@ -43,10 +43,12 @@ void	rra(t_block *sta, t_stacks *stacks);
 // void	rrb(t_stacks *stacks);
 int		ft_isdigit(int c);
 int		order_check(t_block *sta, int argc);
-int		solve_check(t_stacks *stacks);
+int	solve_check(t_stacks *stacks, t_block *sta);
 void	three_swap_a(t_stacks *stacks);
 void	median_finder_a(t_stacks *stacks);
 void	seperator_a(t_stacks *stacks);
 int	median_finder(t_block *sta, t_stacks stacks);
+int solver(t_block *sta, t_block *stb, t_stacks stacks);
+void	twospin(t_block *sta, t_stacks stacks);
 
 #endif

@@ -26,14 +26,14 @@ int	order_check(t_block *sta, int argc)
 	exit (0);
 }
 
-int	solve_check(t_stacks *stacks)
+int	solve_check(t_stacks *stacks, t_block *sta)
 {
 	int	i;
 
 	i = 0;
-	while (i < stacks->anum)
+	while (i < stacks->anum - 1)
 	{
-		if (stacks->sta[i] < stacks->sta[i + 1])
+		if (sta[i].parti < sta[i + 1].parti)
 			return (0);
 		i++;
 	}

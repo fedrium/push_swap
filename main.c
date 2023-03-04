@@ -32,7 +32,7 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 		sta[i - 1].n = 0;
 		i++;
 	}
-	stacks->anum = i;
+	// stacks->anum = i;
 	return (0);
 }
 
@@ -53,14 +53,14 @@ int	main(int argc, char *argv[])
 		write(1, "Error, Gay in Progress!\n", 24);
 		return (1);
 	}
-	median_finder(sta, stacks);
-	// while (i < argc)
-	// {
-	// 	printf("sta: %i   ", sta[i].parti);
-	// 	// printf("n: %i   \n", sta[i].n);
-	// 	printf("stb: %i \n", stb[i].parti);
-	// 	i++;
-	// }
+	solver(sta, stb, stacks);
+	while (i < argc)
+	{
+		printf("sta: %i   ", sta[i].parti);
+		// printf("n: %i   \n", sta[i].n);
+		printf("stb: %i \n", stb[i].parti);
+		i++;
+	}
 	// printf("next\n");
 	// pa(&stacks);
 	// i = 0;

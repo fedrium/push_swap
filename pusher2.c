@@ -53,7 +53,7 @@ void	rra(t_block *sta, t_stacks *stacks)
 	int	i;
 	int	temp;
 
-	i = stacks->anum - 2;
+	i = stacks->anum;
 	temp = sta[i].parti;
 	while (i > 0)
 	{
@@ -68,7 +68,7 @@ void	rrb(t_block *stb, t_stacks *stacks)
 	int	i;
 	int	temp;
 
-	i = stacks->bnum - 2;
+	i = stacks->bnum;
 	temp = stb[i].parti;
 	while (i > 0)
 	{
