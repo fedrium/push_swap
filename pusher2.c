@@ -19,7 +19,7 @@ void	ra(t_block *sta, t_stacks *stacks)
 
 	i = 0;
 	temp = sta[0].parti;
-	while (i < stacks->anum - 1)
+	while (i < stacks->anum)
 	{
 		sta[i].parti = sta[i + 1].parti;
 		i++;
@@ -34,7 +34,7 @@ void	rb(t_block *stb, t_stacks *stacks)
 
 	i = 0;
 	temp = stb[0].parti;
-	while (i < stacks->bnum - 1)
+	while (i < stacks->bnum)
 	{
 		stb[i].parti = stb[i + 1].parti;
 		i++;

@@ -62,27 +62,41 @@ int	median_finder(t_block *sta, t_stacks stacks)
 	int	i;
 
 	i = 0;
-	int	temp[stacks.anum + 1];
+	// printf("anum_median: %i\n", stacks.anum);
+	int	temp[stacks.anum];
 	int	temptwo;
-	while (sta[i].parti != '\0' && sta != 0)
+	while (i < stacks.anum)
 	{
 		temp[i] = sta[i].parti;
 		i++;
 	}
+	temp[i] = '\0';
 	i = 0;
-	while (temp[i] != '\0')
+	while (i < stacks.anum)
 	{
-		if (temp[i] > temp[i + 1])
+		int	j;
+
+		j = 0;
+		while (temp[j + 1] != '\0')
 		{
-			temptwo = temp[i];
-			temp[i] = temp[i + 1];
-			temp[i] = temptwo;
+			if (temp[j] > temp[j + 1])
+			{
+				temptwo = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = temptwo;
+			}	
+			j++;
 		}
 		i++;
 	}
-
+	// i = 0;
+	// while (temp[i] != '\0')
+	// {			
+	// 	printf("i: %i\n", temp[i]);
+	// 	i++;
+	// }
 	if (stacks.anum % 2 == 0)
-		return(temp[stacks.anum / 2]);
+		return(temp[(stacks.anum / 2) - 1]);
 	else
-		return(temp[(stacks.anum / 2) + 1]);
+		return(temp[(stacks.anum / 2)]);
 }
