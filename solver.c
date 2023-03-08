@@ -8,9 +8,7 @@ int solver(t_block *sta, t_block *stb, t_stacks stacks)
 
 	median = median_finder(sta, stacks);
     i = stacks.anum;
-    while (stacks.anum > 3)
-	{
-        // printf("mid: %i\n", median);
+        printf("mid: %i\n", median);
         // printf("anum: %i\n", stacks.anum);
         while (i > 0)
         {
@@ -20,11 +18,10 @@ int solver(t_block *sta, t_block *stb, t_stacks stacks)
                 ra(sta, &stacks);
             i--;
         }
-		if (stacks.anum > 3)
-			solver(sta, stb, stacks);
-	}
-	// if (stacks.anum == 2)
-	// 	twospin(sta, stacks);
+    if (stacks.anum >= 3)
+		solver(sta, stb, stacks);
+	if (stacks.anum == 2)
+		twospin(sta, stacks);
     // if (stb != 0)
     //     solver(sta, stb, stacks);
     return (i);
