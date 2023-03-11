@@ -1,7 +1,17 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int solver(t_block *sta, t_block *stb, t_stacks stacks)
+void	pta(t_block* sta, t_block *stb, int pamount)
+{
+	if (pamount == 3)
+	{
+		if (stb[0].parti < stb[1].parti)
+			sb(stb, stacks);
+		if (stb[0].parti > stb[1].parti && )
+	}
+}
+
+int solver_sta(t_block *sta, t_block *stb, int pushed)
 {
     int	i;
     int	median;
@@ -18,13 +28,35 @@ int solver(t_block *sta, t_block *stb, t_stacks stacks)
                 ra(sta, &stacks);
             i--;
         }
-    if (stacks.anum >= 3)
+    if (stacks.anum > 3)
 		solver(sta, stb, stacks);
 	if (stacks.anum == 2)
 		twospin(sta, stacks);
-    // if (stb != 0)
-    //     solver(sta, stb, stacks);
+    if (stb != 0)
+        solver(sta, stb, stacks);
     return (i);
+}
+
+void	solver_stb(t_block *sta, t_block *stb, int pushed)
+{
+	int	i;
+	int	rtd;
+	int	median;
+
+	median = median_finder(stb, stacks);
+	i = pushed;
+	rtd = 0;
+	while (i > 0)
+	{
+		if (stb[0].parti < median)
+		{
+			rb(stb, stacks);
+			rtd++;
+		}
+		i--;
+	}
+	if (rtd < 4)
+		 
 }
 
 void    twospin(t_block *sta, t_stacks stacks)
