@@ -88,12 +88,12 @@ int	median_finder(t_block *sta, t_stacks stacks)
 		}
 		i++;
 	}
-	i = 0;
-	while (i < stacks.anum)
-	{			
-		printf("i: %i\n", temp[i]);
-		i++;
-	}
+	// i = 0;
+	// while (i < stacks.anum)
+	// {			
+	// 	printf("i: %i\n", temp[i]);
+	// 	i++;
+	// }
 	if (stacks.anum % 2 == 0)
 		return(temp[(stacks.anum / 2) - 1]);
 	else

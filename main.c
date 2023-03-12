@@ -42,6 +42,9 @@ int	main(int argc, char *argv[])
 	t_block *sta;
 	t_block *stb;
 	int i;
+	int	pushed;
+
+	pushed = 0;
 	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
 	stb = malloc(sizeof(t_block) * argc);
@@ -53,7 +56,7 @@ int	main(int argc, char *argv[])
 		write(1, "Error, Bad in Progress!\n", 24);
 		return (1);
 	}
-	solver(sta, stb, stacks);
+	solver_sta(sta, stb, pushed, stacks);
 	while (i < argc)
 	{
 		printf("sta: %i   ", sta[i].parti);
