@@ -57,7 +57,7 @@ int	ft_isdigit(int c)
 		return (1);
 }
 
-int	median_finder(t_block *sta, t_stacks stacks)
+int	median_finder_a(t_block *sta, t_stacks stacks)
 {
 	int	i;
 
@@ -98,4 +98,47 @@ int	median_finder(t_block *sta, t_stacks stacks)
 		return(temp[(stacks.anum / 2) - 1]);
 	else
 		return(temp[(stacks.anum / 2)]);
+}
+
+int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
+{
+	int	i;
+
+	i = 0;
+	// printf("anum_median: %i\n", stacks.anum);
+	int	temp[pushed];
+	int	temptwo;
+	while (i < pushed)
+	{
+		temp[i] = stb[i].parti;
+		i++;
+	}
+	// temp[i] = '\0';
+	i = 0;
+	int j;
+	while (i < pushed)
+	{
+		j = 0;
+		while (j + 1 < pushed)
+		{
+			if (temp[j] > temp[j + 1])
+			{
+				temptwo = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = temptwo;
+			}	
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < pushed)
+	{			
+		printf("median_b: %i\n", temp[i]);
+		i++;
+	}
+	if (pushed % 2 == 0)
+		return(temp[(pushed / 2) - 1]);
+	else
+		return(temp[(pushed / 2)]);
 }

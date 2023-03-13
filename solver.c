@@ -34,30 +34,32 @@ int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
     int	i;
     int	median;
 
-	median = median_finder(sta, stacks);
+	median = median_finder_a(sta, stacks);
     i = stacks.anum;
-        // printf("mid: %i\n", median);
-        // printf("anum: %i\n", stacks.anum);
-        while (i > 0)
-        {
-            if (sta[0].parti < median)
+	// printf("mid: %i\n", median);
+	// printf("anum: %i\n", stacks.anum);
+	if (pushed <= 3)
+	{
+		if (pushed == 3)
+			three_spin_a(sta, stacks);
+		if (pushed == 2)
+			twospin(sta, stacks);
+	}
+	if (pushed > 3)
+	{
+		while (i > 0)
+		{
+			if (sta[0].parti < median)
 			{
-                pb(sta, stb, &stacks);
+				pb(sta, stb, &stacks);
 				pushed++;
 			}
-            else
-                ra(sta, &stacks);
-            i--;
-        }
-    if (stacks.anum > 3)
-		solver_sta(sta, stb, pushed, stacks);
-	if (stacks.anum <= 3)
-		solver_stb(sta, stb, pushed, stacks);
-	// if (stacks.anum == 2)
-	// 	twospin(sta, stacks);
-    // if (stb != 0)
-        // solver_sta(sta, stb, pushed, stacks);
-	printf("pushed: %i\n", pushed);
+			else
+				ra(sta, &stacks);
+			i--;
+		}
+	}
+	// printf("pushed: %i\n", pushed);
     return (i);
 }
 
@@ -67,20 +69,23 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 	int	rtd;
 	int	median;
 
-		printf("pushed_b: %i\n", pushed);
-	median = median_finder(stb, stacks);
+		// printf("pushed_b: %i\n", pushed);
+	median = median_finder_b(stb, stacks, pushed / 2);
+	printf("median: %i\n", median);
 	i = pushed;
 	rtd = 0;
 	while (i > 0)
 	{
+		printf("Stb: %i\n", stb[0].parti);
 		if (stb[0].parti < median)
 		{
+			printf("Stb: %i\n", stb[0].parti);
 			rb(stb, &stacks);
 			rtd++;
 		}
 		i--;
 	}
-	// printf("rtd: %i\n", rtd);
+	printf("rtd: %i\n", rtd);
 	if (rtd > 4)
 		solver_stb(sta, stb, rtd, stacks);
 	else if (rtd < 4)
@@ -101,4 +106,22 @@ void    twospin(t_block *sta, t_stacks stacks)
 {
     if (sta[0].parti > sta[1].parti)
         sa(sta);
+}
+
+void	three_spin_a(t_block *sta, t_stacks stacks)
+{
+	if (sta[0].parti > sta[1].parti && sta[0].parti < sta[2].parti)
+		sa(sta);
+	if (sta[0].parti > sta[1].parti && sta[0].parti > sta[2].parti)
+	{
+		if (sta[1].parti > sta[2].parti)
+			ra(sta, &stacks);
+		ra(sta, &stacks);
+	}
+	if (sta[1].parti > sta[0].parti && sta[1].parti > sta[2].parti)
+	{
+		rra(sta, &stacks);
+		if (sta[0].parti > sta[1].parti)
+			sa(sta);
+	}
 }

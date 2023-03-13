@@ -44,12 +44,12 @@ int	main(int argc, char *argv[])
 	int i;
 	int	pushed;
 
-	pushed = 0;
 	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
 	stb = malloc(sizeof(t_block) * argc);
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
+	pushed = stacks.anum;
 	if (converter(sta, argc, argv, &stacks) || 
 		order_check(sta, argc) == 1)
 	{
