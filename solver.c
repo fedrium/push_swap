@@ -38,7 +38,7 @@ int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 	rotated = 0;
     i = pushed;
 	// printf("i: %i\n", i);
-	// printf("mid: %i\n", median);
+	printf("mid: %i\n", median);
 	// printf("anum: %i\n", stacks.anum);
 	if (pushed == 3)
 		three_spin_a(sta, stacks);
@@ -75,7 +75,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 
 	// printf("bnum: %i\n", stacks.bnum);
 	median = median_finder_b(stb, stacks, pushed);
-	// printf("median: %i\n", median);
+	printf("median: %i\n", median);
 	// printf("pushed_b: %i\n", pushed);
 	rotated = 0;
 	i = pushed;
@@ -83,7 +83,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 		three_spin(sta, stb, stacks);
 	if (pushed == 2)
 	{
-		if (stb[0].parti > stb[1].parti)
+		if (stb[0].parti < stb[1].parti)
 			sb(stb);
 		pa(sta, stb, &stacks);
 		pa(sta, stb, &stacks);
@@ -95,7 +95,6 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			if (stb[0].parti < median)
 			{
 				pa(sta, stb, &stacks);
-				// pushed++;
 			}
 			else
 			{
@@ -104,6 +103,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			}
 			i--;
 		}
+		// printf("rtd: %i\n", rotated);
 		rotator_b(stb, rotated, stacks);
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
@@ -118,20 +118,17 @@ void    twospin(t_block *sta, t_stacks stacks)
 
 void	three_spin_a(t_block *sta, t_stacks stacks)
 {
-	if (sta[0].parti > sta[1].parti && sta[0].parti < sta[2].parti)
+	if (sta[0].parti > sta[1].parti)
 		sa(sta);
-	if (sta[0].parti > sta[1].parti && sta[0].parti > sta[2].parti)
+	if (sta[0].parti < sta[1].parti && sta[0].parti > sta[2].parti ||
+	sta[0].parti < sta[1].parti && sta[0].parti < sta[2].parti)
 	{
-		if (sta[1].parti > sta[2].parti)
-			ra(sta, &stacks);
 		ra(sta, &stacks);
-	}
-	if (sta[1].parti > sta[0].parti && sta[1].parti > sta[2].parti)
-	{
+		sa(sta);
 		rra(sta, &stacks);
-		if (sta[0].parti > sta[1].parti)
-			sa(sta);
 	}
+	if (sta[0].parti > sta[1].parti)
+		sa(sta);
 }
 
 void	rotator_a(t_block *sta, int rotated, t_stacks stacks)
