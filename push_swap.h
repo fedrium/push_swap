@@ -40,18 +40,20 @@ void	ra(t_block *sta, t_stacks *stacks);
 void	rb(t_block *stb, t_stacks *stacks);
 void	rr(t_block *sta, t_block *stb, t_stacks *stacks);
 void	rra(t_block *sta, t_stacks *stacks);
-// void	rrb(t_stacks *stacks);
+void	rrb(t_block *stb, t_stacks *stacks);
 int		ft_isdigit(int c);
 int		order_check(t_block *sta, int argc);
 int	solve_check(t_stacks *stacks, t_block *sta);
 void	three_swap_a(t_stacks *stacks);
 void	seperator_a(t_stacks *stacks);
-int	median_finder_a(t_block *sta, t_stacks stacks);
+int	median_finder_a(t_block *sta, t_stacks stacks, int pushed);
 int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	twospin(t_block *sta, t_stacks stacks);
 void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	three_spin(t_block* sta, t_block *stb, t_stacks stacks);
 int	median_finder_b(t_block *stb, t_stacks stacks, int pushed);
 void	three_spin_a(t_block *sta, t_stacks stacks);
+void	rotator_a(t_block *sta, int rotated, t_stacks stacks);
+void	rotator_b(t_block *stb, int rotated, t_stacks stacks);
 
 #endif

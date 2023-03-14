@@ -57,15 +57,15 @@ int	ft_isdigit(int c)
 		return (1);
 }
 
-int	median_finder_a(t_block *sta, t_stacks stacks)
+int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 {
 	int	i;
 
 	i = 0;
 	// printf("anum_median: %i\n", stacks.anum);
-	int	temp[stacks.anum];
+	int	temp[pushed];
 	int	temptwo;
-	while (i < stacks.anum)
+	while (i < pushed)
 	{
 		temp[i] = sta[i].parti;
 		i++;
@@ -73,10 +73,10 @@ int	median_finder_a(t_block *sta, t_stacks stacks)
 	// temp[i] = '\0';
 	i = 0;
 	int j;
-	while (i < stacks.anum)
+	while (i < pushed)
 	{
 		j = 0;
-		while (j + 1 < stacks.anum)
+		while (j + 1 < pushed)
 		{
 			if (temp[j] > temp[j + 1])
 			{
@@ -95,9 +95,9 @@ int	median_finder_a(t_block *sta, t_stacks stacks)
 	// 	i++;
 	// }
 	if (stacks.anum % 2 == 0)
-		return(temp[(stacks.anum / 2) - 1]);
+		return(temp[(pushed / 2)]);
 	else
-		return(temp[(stacks.anum / 2)]);
+		return(temp[(pushed / 2)]);
 }
 
 int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
@@ -132,13 +132,13 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 		i++;
 	}
 	i = 0;
-	while (i < pushed)
-	{			
-		printf("median_b: %i\n", temp[i]);
-		i++;
-	}
+	// while (i < pushed)
+	// {			
+	// 	printf("median_b: %i\n", temp[i]);
+	// 	i++;
+	// }
 	if (pushed % 2 == 0)
-		return(temp[(pushed / 2) - 1]);
+		return(temp[(pushed / 2)]);
 	else
 		return(temp[(pushed / 2)]);
 }
