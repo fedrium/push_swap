@@ -94,10 +94,7 @@ int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 	// 	printf("i: %i\n", temp[i]);
 	// 	i++;
 	// }
-	if (stacks.anum % 2 == 0)
-		return(temp[(pushed / 2)]);
-	else
-		return(temp[(pushed / 2)]);
+	return(temp[(pushed / 2)]);
 }
 
 int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
@@ -137,8 +134,5 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 	// 	printf("median_b: %i\n", temp[i]);
 	// 	i++;
 	// }
-	if (pushed % 2 == 0)
-		return(temp[(pushed / 2)]);
-	else
-		return(temp[(pushed / 2)]);
+	return(temp[(pushed / 2)]);
 }

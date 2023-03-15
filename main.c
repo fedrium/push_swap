@@ -57,6 +57,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	solver_sta(sta, stb, pushed, stacks);
+	printf("bnum: %i\n", stacks.bnum);
 	while (i < argc)
 	{
 		printf("sta: %i   ", sta[i].parti);
