@@ -51,21 +51,38 @@ int	main(int argc, char *argv[])
 	stacks.bnum = 0;
 	pushed = stacks.anum;
 	if (converter(sta, argc, argv, &stacks) || 
-		order_check(sta, argc) == 1)
+		order_check(sta, argc) == 1 || argc < 2)
 	{
-		write(1, "Error, Bad in Progress!\n", 24);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	solver_sta(sta, stb, pushed, stacks);
-	printf("bnum: %i\n", stacks.bnum);
-	while (i < argc)
-	{
-		printf("sta: %i   ", sta[i].parti);
-		// printf("n: %i   \n", sta[i].n);
-		printf("stb: %i \n", stb[i].parti);
-		i++;
-	}
-	// printf("next\n");
+	// pb(sta, stb, &stacks);
+	// pb(sta, stb, &stacks);
+	// pb(sta, stb, &stacks);
+	// three_spin(sta, stb, stacks);
+	// pb(sta, stb, &stacks);
+	// pb(sta, stb, &stacks);
+	// ra(sta, &stacks);
+	// pa(sta, stb, &stacks);
+	// pa(sta, stb, &stacks);
+	// pa(sta, stb, &stacks);
+	// i = stacks.anum;
+	// while (i-- > 0)
+	// 	printf(" %d |", sta[i].parti);
+	// i = stacks.bnum;
+	// printf("\n");
+	// while (i-- > 0)
+	// 	printf(" %d |", stb[i].parti);
+	// printf("bnum: %i\n", stacks.bnum);
+	// while (i < argc)
+	// {
+	// 	printf("sta: %i   ", sta[i].parti);
+	// 	// printf("n: %i   \n", sta[i].n);
+	// 	printf("stb: %i \n", stb[i].parti);
+	// 	i++;
+	// }
+	// // printf("next\n");
 	// pa(&stacks);
 	// i = 0;
 	// while (i < argc)

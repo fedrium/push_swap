@@ -25,6 +25,7 @@ void	ra(t_block *sta, t_stacks *stacks)
 		i++;
 	}
 	sta[i - 1].parti = temp;
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_block *stb, t_stacks *stacks)
@@ -40,12 +41,14 @@ void	rb(t_block *stb, t_stacks *stacks)
 		i++;
 	}
 	stb[i - 1].parti = temp;
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_block *sta, t_block *stb, t_stacks *stacks)
 {
 	ra(sta, stacks);
 	rb(stb, stacks);
+	write(1, "rrr\n", 4);
 }
 
 void	rra(t_block *sta, t_stacks *stacks)
@@ -62,6 +65,7 @@ void	rra(t_block *sta, t_stacks *stacks)
 	}
 	sta[stacks->anum].parti = 0;
 	sta[0].parti = temp;
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_block *stb, t_stacks *stacks)
@@ -78,4 +82,5 @@ void	rrb(t_block *stb, t_stacks *stacks)
 	}
 	stb[stacks->bnum].parti = 0;
 	stb[0].parti = temp;
+	write(1, "rrb\n", 4);
 }
