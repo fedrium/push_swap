@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyu-xian <bocal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyu-xian <bocal@student.42.fr>                +#+  +:+       +#+     */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:25:50 by bocal             #+#    #+#             */
 /*   Updated: 2022/12/17 16:25:51 by bocal            ###   ########.fr       */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -60,23 +60,19 @@ int	ft_isdigit(int c)
 int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 {
 	int	i;
+	int	j;
+	int	*temp;
+	int	temptwo;
 
 	i = 0;
-	// printf("anum_median: %i\n", stacks.anum);
-	int	temp[pushed];
-	int	temptwo;
-	while (i < pushed)
-	{
+	temp = malloc(sizeof(int) * pushed);
+	while (i++ < pushed)
 		temp[i] = sta[i].parti;
-		i++;
-	}
-	// temp[i] = '\0';
 	i = 0;
-	int j;
-	while (i < pushed)
+	while (i++ < pushed)
 	{
 		j = 0;
-		while (j + 1 < pushed)
+		while (j++ + 1 < pushed)
 		{
 			if (temp[j] > temp[j + 1])
 			{
@@ -84,39 +80,27 @@ int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 				temp[j] = temp[j + 1];
 				temp[j + 1] = temptwo;
 			}	
-			j++;
 		}
-		i++;
 	}
-	// i = 0;
-	// while (i < stacks.anum)
-	// {			
-	// 	printf("i: %i\n", temp[i]);
-	// 	i++;
-	// }
-	return(temp[(pushed / 2)]);
+	return (temp[(pushed / 2)]);
 }
 
 int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 {
 	int	i;
+	int	j;
+	int	*temp;
+	int	temptwo;
 
 	i = 0;
-	// printf("anum_median: %i\n", stacks.anum);
-	int	temp[pushed];
-	int	temptwo;
-	while (i < pushed)
-	{
+	temp = malloc(sizeof(int) * pushed);
+	while (i++ < pushed)
 		temp[i] = stb[i].parti;
-		i++;
-	}
-	// temp[i] = '\0';
 	i = 0;
-	int j;
-	while (i < pushed)
+	while (i++ < pushed)
 	{
 		j = 0;
-		while (j + 1 < pushed)
+		while (j++ + 1 < pushed)
 		{
 			if (temp[j] > temp[j + 1])
 			{
@@ -124,15 +108,7 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 				temp[j] = temp[j + 1];
 				temp[j + 1] = temptwo;
 			}	
-			j++;
 		}
-		i++;
 	}
-	i = 0;
-	// while (i < pushed)
-	// {			
-	// 	printf("median_b: %i\n", temp[i]);
-	// 	i++;
-	// }
-	return(temp[(pushed / 2)]);
+	return (temp[(pushed / 2)]);
 }

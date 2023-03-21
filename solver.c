@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	three_spin(t_block* sta, t_block *stb, t_stacks stacks)
+void	three_spin(t_block *sta, t_block *stb, t_stacks stacks)
 {
 	if (stb[0].parti < stb[1].parti)
 		sb(stb);
@@ -9,7 +9,7 @@ void	three_spin(t_block* sta, t_block *stb, t_stacks stacks)
 	{
 		pa(sta, stb, &stacks);
 		if (stb[0].parti > stb[1].parti)
-				pa(sta, stb, &stacks);
+			pa(sta, stb, &stacks);
 		else
 		{
 			sb(stb);
@@ -27,8 +27,7 @@ void	three_spin(t_block* sta, t_block *stb, t_stacks stacks)
 	}
 }
 
-
-int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
+int	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 {
     int	i;
     int	median;
@@ -37,9 +36,6 @@ int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 	median = median_finder_a(sta, stacks, pushed);
 	rotated = 0;
     i = pushed;
-	// printf("i: %i\n", i);
-	// printf("mid: %i\n", median);
-	// printf("anum: %i\n", stacks.anum);
 	if (pushed == 3)
 		three_spin_a(sta, stacks);
 	if (pushed == 2)
@@ -60,14 +56,6 @@ int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			}
 			i--;
 		}
-	// while (i < 20)
-	// {
-	// 	printf("sta: %i   ", sta[i].parti);
-	// 	// printf("n: %i   \n", sta[i].n);
-	// 	printf("stb: %i \n", stb[i].parti);
-	// 	i++;
-	// }
-	// 	printf(" \n");
 		rotator_a(sta, rotated, stacks);
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
@@ -108,6 +96,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			}
 			i--;
 		}
+		rotator_b(stb, rotated, stacks);
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
 	}

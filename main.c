@@ -11,15 +11,14 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-#include <stdio.h>
+
 int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[i]) 
+	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j] != '\0')
@@ -32,17 +31,16 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 		sta[i - 1].n = 0;
 		i++;
 	}
-	// stacks->anum = i;
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_stacks stacks;
-	t_block *sta;
-	t_block *stb;
-	int i;
-	int	pushed;
+	t_stacks	stacks;
+	t_block		*sta;
+	t_block		*stb;
+	int			i;
+	int			pushed;
 
 	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
@@ -50,56 +48,12 @@ int	main(int argc, char *argv[])
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
 	pushed = stacks.anum;
-	if (converter(sta, argc, argv, &stacks) || 
-		order_check(sta, argc) == 1 || argc < 2)
+	if (converter(sta, argc, argv, &stacks)
+		|| order_check(sta, argc) == 1 || argc < 2)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	solver_sta(sta, stb, pushed, stacks);
-	// pb(sta, stb, &stacks);
-	// pb(sta, stb, &stacks);
-	// pb(sta, stb, &stacks);
-	// three_spin(sta, stb, stacks);
-	// pb(sta, stb, &stacks);
-	// pb(sta, stb, &stacks);
-	// ra(sta, &stacks);
-	// pa(sta, stb, &stacks);
-	// pa(sta, stb, &stacks);
-	// pa(sta, stb, &stacks);
-	// i = stacks.anum;
-	// while (i-- > 0)
-	// 	printf(" %d |", sta[i].parti);
-	// i = stacks.bnum;
-	// printf("\n");
-	// while (i-- > 0)
-	// 	printf(" %d |", stb[i].parti);
-	// printf("bnum: %i\n", stacks.bnum);
-	// while (i < argc)
-	// {
-	// 	printf("sta: %i   ", sta[i].parti);
-	// 	// printf("n: %i   \n", sta[i].n);
-	// 	printf("stb: %i \n", stb[i].parti);
-	// 	i++;
-	// }
-	// // printf("next\n");
-	// pa(&stacks);
-	// i = 0;
-	// while (i < argc)
-	// {
-	// 	printf("sta: %i   ", stacks.sta[i]);
-	// 	printf("stb: %i\n", stacks.stb[i]);
-	// 	i++;
-	// }
-	// i = 0;
-	// printf("next\n"); 
-	// pa(&stacks);
-	// while (i < argc)
-	// {
-	// 	printf("sta: %i   ", stacks.sta[i]);
-	// 	printf("stb: %i\n", stacks.stb[i]);
-	// 	i++;
-	// }
-	// printf("sta: %i\n", stacks.sta[0]);
 	return (0);
 }

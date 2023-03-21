@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	order_check(t_block *sta, int argc)
 {
 	int	i;
