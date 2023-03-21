@@ -38,7 +38,7 @@ void	ss(t_block *sta, t_block *stb)
 {
 	sa(sta);
 	sb(stb);
-	write(1, "ss\n", 1);
+	write(1, "ss\n", 3);
 }
 
 

@@ -21,13 +21,14 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 	while (argv[i])
 	{
 		j = 0;
-		while (argv[i][j] != '\0')
+		while (argv[i][j])
 		{
 			if (ft_isdigit(argv[i][j]) == 1)
 				return (1);
 			j++;
 		}
-		sta[i - 1].parti = ft_atoi(argv[i]);
+		if (sta[i - 1].parti = ft_atoi(argv[i]) == 1)
+			return (1);
 		sta[i - 1].n = 0;
 		i++;
 	}
@@ -48,12 +49,17 @@ int	main(int argc, char *argv[])
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
 	pushed = stacks.anum;
-	if (converter(sta, argc, argv, &stacks)
-		|| order_check(sta, argc) == 1 || argc < 2)
+	if (converter(sta, argc, argv, &stacks) == 1
+		|| dupe_check(sta, stacks) == 1
+		|| order_check(sta, argc) == 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
+	if (argc == 1)
+		return (0);
 	solver_sta(sta, stb, pushed, stacks);
+	free(sta);
+	free(stb);
 	return (0);
 }

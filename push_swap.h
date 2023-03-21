@@ -15,7 +15,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 typedef struct s_stacks {
 	int *sta;
 	int *stb;
@@ -55,5 +55,6 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed);
 void	three_spin_a(t_block *sta, t_stacks stacks);
 void	rotator_a(t_block *sta, int rotated, t_stacks stacks);
 void	rotator_b(t_block *stb, int rotated, t_stacks stacks);
+int	dupe_check(t_block *sta, t_stacks stacks);
 
 #endif

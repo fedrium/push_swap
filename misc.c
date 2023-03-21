@@ -24,9 +24,9 @@ int	ft_strlen(char *str)
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	nbr;
-	int	neg;
+	int		i;
+	long	nbr;
+	int		neg;
 
 	i = 0;
 	nbr = 0;
@@ -44,6 +44,8 @@ int	ft_atoi(char *str)
 		nbr = nbr * 10 + (str[i] - '0');
 		i++;
 	}
+	if (nbr > 2147483647 || nbr < -2147483648)
+		return (1);
 	if (neg % 2 == 1)
 		return (nbr * -1);
 	return (nbr);
@@ -66,23 +68,30 @@ int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 
 	i = 0;
 	temp = malloc(sizeof(int) * pushed);
-	while (i++ < pushed)
+	while (i < pushed)
+	{
 		temp[i] = sta[i].parti;
+		i++;
+	}
 	i = 0;
-	while (i++ < pushed)
+	while (i < pushed)
 	{
 		j = 0;
-		while (j++ + 1 < pushed)
+		while (j + 1 < pushed)
 		{
 			if (temp[j] > temp[j + 1])
 			{
 				temptwo = temp[j];
 				temp[j] = temp[j + 1];
 				temp[j + 1] = temptwo;
-			}	
+			}
+			j++;
 		}
+		i++;
 	}
-	return (temp[(pushed / 2)]);
+	temptwo = temp[pushed / 2];
+	free(temp);
+	return (temptwo);
 }
 
 int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
@@ -94,21 +103,28 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 
 	i = 0;
 	temp = malloc(sizeof(int) * pushed);
-	while (i++ < pushed)
+	while (i < pushed)
+	{
 		temp[i] = stb[i].parti;
+		i++;
+	}
 	i = 0;
-	while (i++ < pushed)
+	while (i < pushed)
 	{
 		j = 0;
-		while (j++ + 1 < pushed)
+		while (j + 1 < pushed)
 		{
 			if (temp[j] > temp[j + 1])
 			{
 				temptwo = temp[j];
 				temp[j] = temp[j + 1];
 				temp[j + 1] = temptwo;
-			}	
+			}
+			j++;
 		}
+		i++;
 	}
-	return (temp[(pushed / 2)]);
+	temptwo = temp[pushed /2];
+	free(temp);
+	return (temptwo);
 }
