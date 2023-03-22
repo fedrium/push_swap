@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
 	int		i;
 	long	nbr;
@@ -44,8 +44,6 @@ int	ft_atoi(char *str)
 		nbr = nbr * 10 + (str[i] - '0');
 		i++;
 	}
-	if (nbr > 2147483647 || nbr < -2147483648)
-		return (1);
 	if (neg % 2 == 1)
 		return (nbr * -1);
 	return (nbr);

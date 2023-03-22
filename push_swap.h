@@ -25,12 +25,12 @@ typedef struct s_stacks {
 }				t_stacks;
 
 typedef struct s_block {
-	int	n;
-	int parti;
+	int		n;
+	long	parti;
 }				t_block;
 
 int		ft_strlen(char *str);
-int		ft_atoi(char *str);
+long	ft_atoi(char *str);
 void	sa(t_block *sta);
 void	sb(t_block *stb);
 void	ss(t_block *sta, t_block *stb);
@@ -56,5 +56,6 @@ void	three_spin_a(t_block *sta, t_stacks stacks);
 void	rotator_a(t_block *sta, int rotated, t_stacks stacks);
 void	rotator_b(t_block *stb, int rotated, t_stacks stacks);
 int	dupe_check(t_block *sta, t_stacks stacks);
+int	symbol_check(int argc, char **argv);
 
 #endif

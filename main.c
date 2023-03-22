@@ -27,7 +27,9 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 				return (1);
 			j++;
 		}
-		if (sta[i - 1].parti = ft_atoi(argv[i]) == 1)
+		sta[i - 1].parti = ft_atoi(argv[i]);
+		if (sta[i - 1].parti > 2147483647
+		|| sta[i - 1].parti < -2147483648)
 			return (1);
 		sta[i - 1].n = 0;
 		i++;
@@ -49,9 +51,9 @@ int	main(int argc, char *argv[])
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
 	pushed = stacks.anum;
-	if (converter(sta, argc, argv, &stacks) == 1
-		|| dupe_check(sta, stacks) == 1
-		|| order_check(sta, argc) == 1)
+	if (symbol_check(argc, argv) == 1
+		|| converter(sta, argc, argv, &stacks) == 1
+		|| dupe_check(sta, stacks) == 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);

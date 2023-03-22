@@ -16,17 +16,6 @@ int	order_check(t_block *sta, int argc)
 {
 	int	i;
 
-	// printf("working\n");
-	// i = 0;
-	// while (i < argc - 1)
-	// {
-	// 	printf("I: %i\n",sta[i].parti);
-	// 	if (sta[i].parti > 2147483647)
-	// 		return (1);
-	// 	if (sta[i].parti < -2147483646)
-	// 		return (1);
-	// 	i++;
-	// }
 	i = 0;
 	while (i < argc - 2)
 	{
@@ -66,6 +55,34 @@ int dupe_check(t_block *sta, t_stacks stacks)
 				return (1);
 			j++;
 		}
+		i++;
+	}
+	return (0);
+}
+
+int	symbol_check(int argc, char **argv)
+{
+	int	i;
+	int	j;
+	int	neg;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		neg = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] == '-')
+			{
+				neg++;
+				if (ft_isdigit(argv[i][j + 1]) == 1)
+					return (1);
+			}
+			j++;
+		}
+		if (neg > 1)
+			return (1);
 		i++;
 	}
 	return (0);
