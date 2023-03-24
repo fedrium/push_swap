@@ -18,21 +18,26 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 	int	j;
 
 	i = 1;
-	while (argv[i])
+	if (argc == 2)
+		spliter(sta, argc, argv, stacks);
+	else
 	{
-		j = 0;
-		while (argv[i][j])
+		while (argv[i])
 		{
-			if (ft_isdigit(argv[i][j]) == 1)
+			j = 0;
+			while (argv[i][j])
+			{
+				if (ft_isdigit(argv[i][j]) == 1)
+					return (1);
+				j++;
+			}
+			sta[i - 1].parti = ft_atoi(argv[i]);
+			if (sta[i - 1].parti > 2147483647
+			|| sta[i - 1].parti < -2147483648)
 				return (1);
-			j++;
+			sta[i - 1].n = 0;
+			i++;
 		}
-		sta[i - 1].parti = ft_atoi(argv[i]);
-		if (sta[i - 1].parti > 2147483647
-		|| sta[i - 1].parti < -2147483648)
-			return (1);
-		sta[i - 1].n = 0;
-		i++;
 	}
 	return (0);
 }
@@ -50,7 +55,6 @@ int	main(int argc, char *argv[])
 	stb = malloc(sizeof(t_block) * argc);
 	stacks.anum = argc - 1;
 	stacks.bnum = 0;
-	pushed = stacks.anum;
 	if (symbol_check(argc, argv) == 1
 		|| converter(sta, argc, argv, &stacks) == 1
 		|| dupe_check(sta, stacks) == 1)
@@ -58,10 +62,39 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (1);
 	}
+	pushed = stacks.anum;
 	if (argc == 1)
 		return (0);
+	i = 0;
 	solver_sta(sta, stb, pushed, stacks);
 	free(sta);
 	free(stb);
+	return (0);
+}
+
+int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks)
+{
+	char	**array;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	array = ft_split(argv[1], ' ');
+	while (array[i])
+	{
+		while (array[i][j])
+		{
+			if (ft_isdigit(array[i][j]) == 1)
+				return(1);
+			j++;
+		}
+		sta[i].parti = ft_atoi(array[i]);
+		if (sta[i].parti > 2147483647
+			|| sta[i].parti < -2147483648)
+				return (1);
+		i++;
+	}
+	stacks->anum = i;
 	return (0);
 }

@@ -13,9 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include "./get_next_line/get_next_line.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+
 typedef struct s_stacks {
 	int *sta;
 	int *stb;
@@ -57,5 +60,9 @@ void	rotator_a(t_block *sta, int rotated, t_stacks stacks);
 void	rotator_b(t_block *stb, int rotated, t_stacks stacks);
 int	dupe_check(t_block *sta, t_stacks stacks);
 int	symbol_check(int argc, char **argv);
+void	rrr(t_block *sta, t_block *stb, t_stacks stacks);
+char	**ft_split(char const *s, char c);
+int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks);
+void	getop(t_block *sta, t_block *stb, t_stacks stacks);
 
 #endif

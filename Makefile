@@ -1,12 +1,18 @@
-SRCS		= main.c misc.c pusher.c pusher2.c checker.c solver.c
+SRCS		= main.c misc.c pusher.c pusher2.c checker.c solver.c ft_split.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+
+BSRCS		= bonus.c misc.c ft_split.c pusher.c pusher2.c pusher3.c checker.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
+BOBJS		= $(BSRCS:.c=.o)
+
 NAME		= push_swap
+
+BNAME		= checker
 
 CC			= gcc
 
-FLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -fsanitize=address -g3
 
 RM			= rm -rf
 
@@ -14,14 +20,18 @@ RM			= rm -rf
 
 all:		${NAME}
 
+bonus:	${BOBJS}
+				${CC} ${CFLAGS} ${BOBJS} -o ${BNAME}
+
 ${NAME}:	${OBJS}
 				${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
 clean:		
 				${RM} ${OBJS}
+				${RM} ${BOBJS}
 
 fclean:		clean
-				${RM} ${NAME}
+				${RM} ${NAME} ${BNAME}
 
 re:			clean all
 
