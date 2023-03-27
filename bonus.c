@@ -65,6 +65,7 @@ int	main(int argc, char ** argv)
 	t_block		*stb;
 	int			i;
 	int			pushed;
+	char		*op;
 
 	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
@@ -79,7 +80,7 @@ int	main(int argc, char ** argv)
 		return (1);
 	}
 	pushed = stacks.anum;
-	getop(sta, stb, stacks);
+	getop(sta, stb, stacks, op);
 	if (argc == 1)
 		return (0);
 	free(sta);
@@ -96,9 +97,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	while (n > i && (s1[i] != '\0' || s2[i] != '\0'))
 	{
-		if (s1[i] != s2[i])
+		if (s1[i] != s2[i] && (s1[i] != '\n' || s2[i] != '\0'))
 		{
-			printf("char: %c, %c\n", s1[i], s2[i]);
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		}
 		i++;
@@ -109,6 +109,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 void	error()
 {
 	write(1, "KO\n", 3);
+	exit(0);
 }
 
 int	order_check_bonus(t_block *sta, int anum)
@@ -116,7 +117,7 @@ int	order_check_bonus(t_block *sta, int anum)
 	int	i;
 
 	i = 0;
-	while (i < anum)
+	while (i < anum - 1)
 	{
 		if (sta[i].parti > sta[i + 1].parti)
 			return (1);
@@ -125,49 +126,112 @@ int	order_check_bonus(t_block *sta, int anum)
 	return (0);
 }
 
-void	getop(t_block *sta, t_block *stb, t_stacks stacks)
+void	ok()
 {
-	char *op;
-
-	while (1)
-	{
-		op = get_next_line(0);
-		// printf("cmp: %i\n", ft_strncmp(op, "sa", 3));
-		if (op == 0 || op[0] == '\0')
-		{
-			if (order_check_bonus(sta, stacks.anum) == 0)
-			{
-				write(1, "OK\n", 3);
-				exit(0);
-			}
-			else
-				error();
-		}
-		else if (!ft_strncmp(op, "sa", 3))
-			sa(sta);
-		else if (!ft_strncmp(op, "sb", 4))
-			sb(stb);
-		else if (!ft_strncmp(op, "ss", 4))
-			ss(sta, stb);
-		else if (!ft_strncmp(op, "pa", 4))
-			pa(sta, stb, &stacks);
-		else if (!ft_strncmp(op, "pb", 4))
-			pb(sta, stb, &stacks);
-		else if (!ft_strncmp(op, "ra", 4))
-			ra(sta, &stacks);
-		else if (!ft_strncmp(op, "rb", 4))
-			rb(stb, &stacks);
-		else if (!ft_strncmp(op, "rr", 4))
-			rr(sta, stb, &stacks);
-		else if (!ft_strncmp(op, "rra", 4))
-			rra(sta, &stacks);
-		else if (!ft_strncmp(op, "rrb", 4))
-			rrb(stb, &stacks);
-		else if (!ft_strncmp(op, "rrr", 4))
-			rrr(sta, stb, stacks);
-		else
-			error();
-		free(op);
-	}
+	write(1, "OK\n", 3);
 	exit(0);
 }
+
+void	getophelper(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+{
+	if (op == 0 || op[0] == '\0')
+	{
+		if (order_check_bonus(sta, stacks.anum) == 0)
+			ok();
+		else
+			error();
+	}
+}
+
+// void    swap_push(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+// {
+//     if (!ft_strncmp(op, "sa", 3))
+//         bsa(sta, stacks);
+//     else if (!ft_strncmp(op, "sb", 3))
+//         bsb(stb, stacks);
+//     else if (!ft_strncmp(op, "ss", 3))
+//         bss(sta, stb, stacks);
+//     else if (!ft_strncmp(op, "pa", 3))
+//         pa(sta, stb, &stacks);
+//     else if (!ft_strncmp(op, "pb", 3))
+//         pb(sta, stb, &stacks);
+//     else
+//         return ;
+// }
+
+// void	getop(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+// {
+// 	while (1)
+// 	{
+// 		op = get_next_line(0);
+// 		getophelper(sta, stb, stacks, op);
+// 		// if (!ft_strncmp(op, "sa", 3))
+// 		// 	bsa(sta, stacks);
+// 		// else if (!ft_strncmp(op, "sb", 3))
+// 		// 	bsb(stb, stacks);
+// 		// else if (!ft_strncmp(op, "ss", 3))
+// 		// 	bss(sta, stb, stacks);
+// 		// else if (!ft_strncmp(op, "pa", 3))
+// 		// 	pa(sta, stb, &stacks);
+// 		// else if (!ft_strncmp(op, "pb", 3))
+// 		// 	pb(sta, stb, &stacks);
+// 		swap_push(sta, stb, stacks, op);
+// 		if (!ft_strncmp(op, "ra", 3))
+// 			ra(sta, &stacks);
+// 		else if (!ft_strncmp(op, "rb", 3))
+// 			rb(stb, &stacks);
+// 		else if (!ft_strncmp(op, "rr", 3))
+// 			rr(sta, stb, &stacks);
+// 		else if (!ft_strncmp(op, "rra", 4))
+// 			rra(sta, &stacks);
+// 		else if (!ft_strncmp(op, "rrb", 4))
+// 			rrb(stb, &stacks);
+// 		else if (!ft_strncmp(op, "rrr", 4))
+// 			rrr(sta, stb, stacks);
+// 		else
+// 			error();
+// 		free(op);
+// 	}
+// }
+
+int	compare_exec(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+{
+    if (!ft_strncmp(op, "sa", 3))
+        bsa(sta, stacks);
+    else if (!ft_strncmp(op, "sb", 3))
+        bsb(stb, stacks);
+    else if (!ft_strncmp(op, "ss", 3))
+        bss(sta, stb, stacks);
+    else if (!ft_strncmp(op, "pa", 3))
+        pa(sta, stb, &stacks);
+    else if (!ft_strncmp(op, "pb", 3))
+        pb(sta, stb, &stacks);
+    else if (!ft_strncmp(op, "ra", 3))
+        ra(sta, &stacks);
+    else if (!ft_strncmp(op, "rb", 3))
+        rb(stb, &stacks);
+    else if (!ft_strncmp(op, "rr", 3))
+        rr(sta, stb, &stacks);
+    else if (!ft_strncmp(op, "rra", 4))
+        rra(sta, &stacks);
+    else if (!ft_strncmp(op, "rrb", 4))
+        rrb(stb, &stacks);
+    else if (!ft_strncmp(op, "rrr", 4))
+        rrr(sta, stb, stacks);
+    else
+        return (1);
+    return (0);
+}
+
+void	getop(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+{
+    while (1)
+    {
+        op = get_next_line(0);
+        getophelper(sta, stb, stacks, op);
+        if (compare_exec(sta, stb, stacks, op) == 1)
+            error();
+        free(op);
+    }
+}
+

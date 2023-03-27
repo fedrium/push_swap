@@ -63,6 +63,9 @@ int	symbol_check(int argc, char **argv);
 void	rrr(t_block *sta, t_block *stb, t_stacks stacks);
 char	**ft_split(char const *s, char c);
 int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks);
-void	getop(t_block *sta, t_block *stb, t_stacks stacks);
+void	getop(t_block *sta, t_block *stb, t_stacks stacks, char *op);
+void	bsa(t_block *sta, t_stacks stacks);
+void	bsb(t_block *stb, t_stacks stacks);
+void	bss(t_block *sta, t_block *stb, t_stacks stacks);
 
 #endif
