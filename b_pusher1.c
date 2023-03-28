@@ -64,7 +64,6 @@ void 	pb(t_block *sta, t_block *stb, t_stacks *stacks)
 	int	i;
 
 	i = stacks->bnum;
-
 	if (sta != 0 && stacks->anum > 0)
 	{	
 		temp1 = sta[0].parti;

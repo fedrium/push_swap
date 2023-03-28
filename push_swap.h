@@ -50,7 +50,7 @@ int	solve_check(t_stacks *stacks, t_block *sta);
 void	three_swap_a(t_stacks *stacks);
 void	seperator_a(t_stacks *stacks);
 int	median_finder_a(t_block *sta, t_stacks stacks, int pushed);
-int solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
+void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	twospin(t_block *sta, t_stacks stacks);
 void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	three_spin(t_block* sta, t_block *stb, t_stacks stacks);

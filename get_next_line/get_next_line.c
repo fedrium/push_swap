@@ -26,7 +26,7 @@ int	null_checker(char *buffer)
 {
 	if (buffer == NULL)
 		return (0);
-if (buffer[0] == '\0')
+	if (buffer[0] == '\0')
 	{
 		free(buffer);
 		return (0);
