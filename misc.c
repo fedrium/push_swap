@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyu-xian <bocal@student.42.fr>                +#+  +:+       +#+     */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:25:50 by bocal             #+#    #+#             */
-/*   Updated: 2022/12/17 16:25:51 by bocal            ###   ########.fr       */
+/*   Updated: 2023/04/02 17:19:04 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,7 @@ int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 		i++;
 	}
 	i = 0;
-	while (i < pushed)
-	{
-		j = 0;
-		while (j + 1 < pushed)
-		{
-			if (temp[j] > temp[j + 1])
-			{
-				temptwo = temp[j];
-				temp[j] = temp[j + 1];
-				temp[j + 1] = temptwo;
-			}
-			j++;
-		}
-		i++;
-	}
+	median_helper(temp, temptwo, pushed);
 	temptwo = temp[pushed / 2];
 	free(temp);
 	return (temptwo);
@@ -107,22 +93,8 @@ int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
 		i++;
 	}
 	i = 0;
-	while (i < pushed)
-	{
-		j = 0;
-		while (j + 1 < pushed)
-		{
-			if (temp[j] > temp[j + 1])
-			{
-				temptwo = temp[j];
-				temp[j] = temp[j + 1];
-				temp[j + 1] = temptwo;
-			}
-			j++;
-		}
-		i++;
-	}
-	temptwo = temp[pushed /2];
+	median_helper(temp, temptwo, pushed);
+	temptwo = temp[pushed / 2];
 	free(temp);
 	return (temptwo);
 }

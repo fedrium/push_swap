@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 16:33:01 by bocal             #+#    #+#             */
-/*   Updated: 2023/01/14 16:48:30 by cyu-xian         ###   ########.fr       */
+/*   Created: 2023/04/02 15:11:30 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 18:00:58 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,19 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 			}
 			sta[i - 1].parti = ft_atoi(argv[i]);
 			if (sta[i - 1].parti > 2147483647
-			|| sta[i - 1].parti < -2147483648)
+				|| sta[i - 1].parti < -2147483648)
 				return (1);
 			sta[i - 1].n = 0;
 			i++;
 		}
 	}
 	return (0);
+}
+
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(0);
 }
 
 int	main(int argc, char *argv[])
@@ -58,15 +64,13 @@ int	main(int argc, char *argv[])
 	if (symbol_check(argc, argv) == 1
 		|| converter(sta, argc, argv, &stacks) == 1
 		|| dupe_check(sta, stacks) == 1)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		error();
 	pushed = stacks.anum;
 	if (argc == 1)
 		return (0);
 	i = 0;
 	solver_sta(sta, stb, pushed, stacks);
+	ps(sta, stb, stacks);
 	free(sta);
 	free(stb);
 	return (0);
@@ -86,13 +90,13 @@ int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 		while (array[i][j])
 		{
 			if (ft_isdigit(array[i][j]) == 1)
-				return(1);
+				return (1);
 			j++;
 		}
 		sta[i].parti = ft_atoi(array[i]);
 		if (sta[i].parti > 2147483647
 			|| sta[i].parti < -2147483648)
-				return (1);
+			return (1);
 		i++;
 	}
 	stacks->anum = i;

@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 15:54:07 by bocal             #+#    #+#             */
-/*   Updated: 2023/01/14 16:58:36 by cyu-xian         ###   ########.fr       */
+/*   Created: 2023/04/02 15:23:25 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 15:25:28 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	order_check(t_block *sta, int argc)
 {
 	int	i;
@@ -40,7 +40,7 @@ int	solve_check(t_stacks *stacks, t_block *sta)
 	return (1);
 }
 
-int dupe_check(t_block *sta, t_stacks stacks)
+int	dupe_check(t_block *sta, t_stacks stacks)
 {
 	int	i;
 	int	j;
@@ -49,7 +49,7 @@ int dupe_check(t_block *sta, t_stacks stacks)
 	while (i < stacks.anum)
 	{
 		j = i + 1;
-		while(j < stacks.anum)
+		while (j < stacks.anum)
 		{
 			if (sta[i].parti == sta[j].parti)
 				return (1);

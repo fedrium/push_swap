@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/02 15:23:57 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 15:42:23 by cyu-xian         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
@@ -12,16 +24,15 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 	{
 		while (argv[i])
 		{
-			j = 0;
-			while (argv[i][j])
+			j = -1;
+			while (argv[i][j++])
 			{
 				if (ft_isdigit(argv[i][j]) == 1)
 					return (1);
-				j++;
 			}
 			sta[i - 1].parti = ft_atoi(argv[i]);
 			if (sta[i - 1].parti > 2147483647
-			|| sta[i - 1].parti < -2147483648)
+				|| sta[i - 1].parti < -2147483648)
 				return (1);
 			sta[i - 1].n = 0;
 			i++;
@@ -45,27 +56,26 @@ int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 		while (array[i][j])
 		{
 			if (ft_isdigit(array[i][j]) == 1)
-				return(1);
+				return (1);
 			j++;
 		}
 		sta[i].parti = ft_atoi(array[i]);
 		if (sta[i].parti > 2147483647
 			|| sta[i].parti < -2147483648)
-				return (1);
+			return (1);
 		i++;
 	}
 	stacks->anum = i;
 	return (0);
 }
 
-int	main(int argc, char ** argv)
+int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 	t_block		*sta;
 	t_block		*stb;
 	int			i;
 	int			pushed;
-	char		*op;
 
 	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
@@ -80,7 +90,7 @@ int	main(int argc, char ** argv)
 		return (1);
 	}
 	pushed = stacks.anum;
-	getop(sta, stb, stacks, op);
+	getop(sta, stb, stacks);
 	if (argc == 1)
 		return (0);
 	free(sta);
@@ -106,12 +116,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-// void	error()
-// {
-// 	write(1, "KO\n", 3);
-// 	exit(0);
-// }
-
 int	order_check_bonus(t_block *sta, int anum)
 {
 	int	i;
@@ -124,136 +128,4 @@ int	order_check_bonus(t_block *sta, int anum)
 		i++;
 	}
 	return (0);
-}
-
-void	ok()
-{
-	write(1, "OK\n", 3);
-	exit(0);
-}
-
-// void	getophelper(t_block *sta, t_block *stb, t_stacks stacks, char *op)
-// {
-// 	if (op == 0 || op[0] == '\0')
-// 	{
-// 		if (order_check_bonus(sta, stacks.anum) == 0)
-// 			ok();
-// 		else
-// 			error();
-// 	}
-// }
-
-void	ps(t_block *sta, t_block *stb, t_stacks stacks)
-{
-	for (int i = 0; i < stacks.anum; i++)
-	{
-		printf("sta: %li stb: %li\n", sta[i].parti, stb[i].parti);
-	}
-}
-
-void    error(int x)
-{
-    if (x == 0)
-    {
-        write(1, "KO\n", 3);
-        exit(0);
-    }
-    if (x == 1)
-    {
-        write(1, "Invalid Oppr\n", 13);
-        exit(0);
-    }
-}
-
-// void	getop(t_block *sta, t_block *stb, t_stacks stacks, char *op)
-// {
-// 	while (1)
-// 	{
-// 		op = get_next_line(0);
-// 		if (op == 0 || op[0] == '\0')
-// 		{
-// 			printf("sta: %li\n", sta[1].parti);
-// 			if (order_check_bonus(sta, stacks.anum) == 0)
-// 				ok();
-// 			else
-// 				error(0);
-// 		}
-// 		if (!ft_strncmp(op, "sa", 3))
-// 			bsa(sta, stacks);
-// 		else if (!ft_strncmp(op, "sb", 3))
-// 			bsb(stb, stacks);
-// 		else if (!ft_strncmp(op, "ss", 3))
-// 			bss(sta, stb, stacks);
-// 		else if (!ft_strncmp(op, "pa", 3))
-// 			pa(sta, stb, &stacks);
-// 		else if (!ft_strncmp(op, "pb", 3))
-// 			pb(sta, stb, &stacks);
-// 		else if (!ft_strncmp(op, "ra", 3))
-// 			ra(sta, &stacks);
-// 		else if (!ft_strncmp(op, "rb", 3))
-// 			rb(stb, &stacks);
-// 		else if (!ft_strncmp(op, "rr", 3))
-// 			rr(sta, stb, &stacks);
-// 		else if (!ft_strncmp(op, "rra", 4))
-// 			rra(sta, &stacks);
-// 		else if (!ft_strncmp(op, "rrb", 4))
-// 			rrb(stb, &stacks);
-// 		else if (!ft_strncmp(op, "rrr", 4))
-// 			rrr(sta, stb, stacks);
-// 		else
-// 			error(1);
-// 		free(op);
-// 	}
-// }
-
-int   swap_push(t_block *sta, t_block *stb, t_stacks *stacks, char *op)
-{
-    if (!ft_strncmp(op, "sa", 3))
-        bsa(sta, *stacks);
-    else if (!ft_strncmp(op, "sb", 3))
-        bsb(stb, *stacks);
-    else if (!ft_strncmp(op, "ss", 3))
-        bss(sta, stb, *stacks);
-    else if (!ft_strncmp(op, "pa", 3))
-        pa(sta, stb, stacks);
-    else if (!ft_strncmp(op, "pb", 3))
-        pb(sta, stb, stacks);
-    else
-        return (1);
-    return (0);
-}
-
-void    getophelper(t_block *sta, t_block *stb, t_stacks stacks, char *op)
-{
-    if (op == 0 || op[0] == '\0')
-    {
-        if (order_check_bonus(sta, stacks.anum) == 0)
-            ok();
-        else
-            error(0);
-    }
-}
-
-void    getop(t_block *sta, t_block *stb, t_stacks stacks, char *op)
-{
-    while (1)
-    {
-        op = get_next_line(0);
-        getophelper(sta, stb, stacks, op);
-        if (!ft_strncmp(op, "ra", 3))
-            ra(sta, &stacks);
-        else if (!ft_strncmp(op, "rb", 3))
-            rb(stb, &stacks);
-        else if (!ft_strncmp(op, "rr", 3))
-            rr(sta, stb, &stacks);
-        else if (!ft_strncmp(op, "rra", 4))
-            rra(sta, &stacks);
-        else if (!ft_strncmp(op, "rrb", 4))
-            rrb(stb, &stacks);
-        else if (!ft_strncmp(op, "rrr", 4))
-            rrr(sta, stb, stacks);
-       	else if (swap_push(sta, stb, &stacks, op) == 1)
-            error (1);
-        free(op);
-    }
 }

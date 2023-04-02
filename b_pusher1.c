@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   b_pusher1.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/02 15:43:49 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 15:44:37 by cyu-xian         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	bsa(t_block *sta, t_stacks stacks)
 {
 	int	temp;
 	int	len;
+
 	if (stacks.anum > 1)
 	{
 		temp = sta[0].parti;
@@ -31,8 +44,7 @@ void	bss(t_block *sta, t_block *stb, t_stacks stacks)
 	bsb(stb, stacks);
 }
 
-
-void 	pa(t_block *sta, t_block *stb, t_stacks *stacks)
+void	pa(t_block *sta, t_block *stb, t_stacks *stacks)
 {
 	int	temp1;
 	int	i;
@@ -58,7 +70,7 @@ void 	pa(t_block *sta, t_block *stb, t_stacks *stacks)
 	}
 }
 
-void 	pb(t_block *sta, t_block *stb, t_stacks *stacks)
+void	pb(t_block *sta, t_block *stb, t_stacks *stacks)
 {
 	int	temp1;
 	int	i;

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pusher.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyu-xian <bocal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 16:09:35 by bocal             #+#    #+#             */
-/*   Updated: 2022/12/17 16:09:36 by bocal            ###   ########.fr       */
+/*   Created: 2023/04/02 15:00:09 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 15:00:39 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 void	sa(t_block *sta)
 {
 	int	temp;
@@ -41,8 +41,7 @@ void	ss(t_block *sta, t_block *stb)
 	write(1, "ss\n", 3);
 }
 
-
-void 	pa(t_block *sta, t_block *stb, t_stacks *stacks)
+void	pa(t_block *sta, t_block *stb, t_stacks *stacks)
 {
 	int	temp1;
 	int	i;
@@ -69,7 +68,7 @@ void 	pa(t_block *sta, t_block *stb, t_stacks *stacks)
 	write(1, "pa\n", 3);
 }
 
-void 	pb(t_block *sta, t_block *stb, t_stacks *stacks)
+void	pb(t_block *sta, t_block *stb, t_stacks *stacks)
 {
 	int	temp1;
 	int	i;

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pusher2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bocal <bocal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 15:52:45 by bocal             #+#    #+#             */
-/*   Updated: 2023/01/07 16:43:58 by bocal            ###   ########.fr       */
+/*   Created: 2023/04/02 14:52:21 by cyu-xian          #+#    #+#             */
+/*   Updated: 2023/04/02 14:59:40 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 void	ra(t_block *sta, t_stacks *stacks)
 {
 	int	temp;
