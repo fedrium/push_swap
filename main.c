@@ -70,7 +70,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	i = 0;
 	solver_sta(sta, stb, pushed, stacks);
-	ps(sta, stb, stacks);
 	free(sta);
 	free(stb);
 	return (0);

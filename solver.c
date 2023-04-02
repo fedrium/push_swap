@@ -75,7 +75,7 @@ void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
 	}
-	ps(sta, stb, stacks);
+	// ps(sta, stb, stacks);
 }
 
 void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
@@ -106,7 +106,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
 	}
-	ps(sta, stb, stacks);
+	// ps(sta, stb, stacks);
 }
 
 void	twospin(t_block *sta, t_stacks stacks)

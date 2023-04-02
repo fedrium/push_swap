@@ -1,6 +1,6 @@
 SRCS		= main.c misc.c pusher.c pusher2.c pusher3.c checker.c solver.c ft_split.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c solver_helper.c misc2.c
 
-BSRCS		= bonus.c bonus_helper.c misc.c ft_split.c b_pusher1.c b_pusher2.c b_pusher3.c checker.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+BSRCS		= bonus.c bonus_helper.c misc.c ft_split.c b_pusher1.c b_pusher2.c b_pusher3.c checker.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c misc2.c
 
 OBJS		= $(SRCS:.c=.o)
 

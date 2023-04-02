@@ -40,6 +40,8 @@ int		median_finder_b(t_block *stb, t_stacks stacks, int pushed);
 int		dupe_check(t_block *sta, t_stacks stacks);
 int		symbol_check(int argc, char **argv);
 int		spliter(t_block *sta, int argc, char **argv, t_stacks *stacks);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		order_check_bonus(t_block *sta, int anum);
 
 long	ft_atoi(char *str);
 
