@@ -49,7 +49,7 @@ int	swap_push(t_block *sta, t_block *stb, t_stacks *stacks, char *op)
 	return (0);
 }
 
-void	getophelper(t_block *sta, t_block *stb, t_stacks stacks, char *op)
+void	getophelper(t_block *sta, t_stacks stacks, char *op)
 {
 	if (op == 0 || op[0] == '\0')
 	{
@@ -67,7 +67,7 @@ void	getop(t_block *sta, t_block *stb, t_stacks stacks)
 	while (1)
 	{
 		op = get_next_line(0);
-		getophelper(sta, stb, stacks, op);
+		getophelper(sta, stacks, op);
 		if (!ft_strncmp(op, "ra", 3))
 			ra(sta, &stacks);
 		else if (!ft_strncmp(op, "rb", 3))

@@ -35,13 +35,15 @@ int		ft_strlen(char *str);
 int		ft_isdigit(int c);
 int		order_check(t_block *sta, int argc);
 int		solve_check(t_stacks *stacks, t_block *sta);
-int		median_finder_a(t_block *sta, t_stacks stacks, int pushed);
-int		median_finder_b(t_block *stb, t_stacks stacks, int pushed);
+int		median_finder_a(t_block *sta, int pushed);
+int		median_finder_b(t_block *stb, int pushed);
 int		dupe_check(t_block *sta, t_stacks stacks);
 int		symbol_check(int argc, char **argv);
-int		spliter(t_block *sta, int argc, char **argv, t_stacks *stacks);
+int		spliter(t_block *sta, char *str, t_stacks *stacks);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		order_check_bonus(t_block *sta, int anum);
+int		cnt_word(char const *str, char c);
+int		symbol_check_two(char **array);
 
 long	ft_atoi(char *str);
 
@@ -60,7 +62,7 @@ void	rrb(t_block *stb, t_stacks *stacks);
 void	three_swap_a(t_stacks *stacks);
 void	seperator_a(t_stacks *stacks);
 void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
-void	twospin(t_block *sta, t_stacks stacks);
+void	twospin(t_block *sta);
 void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	three_spin(t_block *sta, t_block *stb, t_stacks stacks);
 void	three_spin_a(t_block *sta, t_stacks stacks);
@@ -76,5 +78,7 @@ void	solverbh(t_block *sta, t_block *stb, t_stacks stacks, int pushed);
 void	ok(void);
 void	median_helper(int *temp, int temptwo, int pushed);
 void	ps(t_block *sta, t_block *stb, t_stacks stacks);
+void	twoargc(char *str, t_block *sta, t_block *stb, t_stacks stacks);
+void	error(t_block *sta, t_block *stb);
 
 #endif

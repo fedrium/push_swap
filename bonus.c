@@ -74,10 +74,7 @@ int	main(int argc, char **argv)
 	t_stacks	stacks;
 	t_block		*sta;
 	t_block		*stb;
-	int			i;
-	int			pushed;
 
-	i = 0;
 	sta = malloc(sizeof(t_block) * argc);
 	stb = malloc(sizeof(t_block) * argc);
 	stacks.anum = argc - 1;
@@ -89,7 +86,6 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	pushed = stacks.anum;
 	getop(sta, stb, stacks);
 	if (argc == 1)
 		return (0);

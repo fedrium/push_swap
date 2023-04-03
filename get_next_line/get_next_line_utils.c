@@ -75,6 +75,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*str;
+	char	*temp;
 
 	i = 0;
 	if (s == 0)

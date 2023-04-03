@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static	int	cnt_word(char const *str, char c)
+int	cnt_word(char const *str, char c)
 {
 	int	i;
 	int	j;
@@ -21,6 +21,8 @@ static	int	cnt_word(char const *str, char c)
 	j = 0;
 	if (c == 0)
 		return (1);
+	while (str[i] == ' ')
+			i++;
 	while (str[i] != '\0')
 	{
 		while (str[i] == c)

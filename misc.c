@@ -51,20 +51,20 @@ long	ft_atoi(char *str)
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57 || c == 45)
+	if ((c >= 48 && c <= 57) || c == 45)
 		return (0);
 	else
 		return (1);
 }
 
-int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
+int	median_finder_a(t_block *sta, int pushed)
 {
 	int	i;
-	int	j;
 	int	*temp;
 	int	temptwo;
 
 	i = 0;
+	temptwo = 0;
 	temp = malloc(sizeof(int) * pushed);
 	while (i < pushed)
 	{
@@ -78,14 +78,14 @@ int	median_finder_a(t_block *sta, t_stacks stacks, int pushed)
 	return (temptwo);
 }
 
-int	median_finder_b(t_block *stb, t_stacks stacks, int pushed)
+int	median_finder_b(t_block *stb, int pushed)
 {
 	int	i;
-	int	j;
 	int	*temp;
 	int	temptwo;
 
 	i = 0;
+	temptwo = 0;
 	temp = malloc(sizeof(int) * pushed);
 	while (i < pushed)
 	{

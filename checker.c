@@ -66,6 +66,7 @@ int	symbol_check(int argc, char **argv)
 	int	j;
 	int	neg;
 
+	(void)argc;
 	i = 1;
 	while (argv[i])
 	{

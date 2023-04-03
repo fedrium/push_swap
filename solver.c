@@ -53,7 +53,7 @@ void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 	int	median;
 	int	rotated;
 
-	median = median_finder_a(sta, stacks, pushed);
+	median = median_finder_a(sta, pushed);
 	rotated = 0;
 	i = pushed;
 	if (pushed <= 3)
@@ -75,7 +75,6 @@ void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
 	}
-	// ps(sta, stb, stacks);
 }
 
 void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
@@ -84,7 +83,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 	int	median;
 	int	rotated;
 
-	median = median_finder_b(stb, stacks, pushed);
+	median = median_finder_b(stb, pushed);
 	rotated = 0;
 	i = pushed;
 	if (pushed <= 3)
@@ -106,10 +105,9 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
 		solver_stb(sta, stb, (pushed / 2), stacks);
 	}
-	// ps(sta, stb, stacks);
 }
 
-void	twospin(t_block *sta, t_stacks stacks)
+void	twospin(t_block *sta)
 {
 	if (sta[0].parti > sta[1].parti)
 		sa(sta);
@@ -119,8 +117,8 @@ void	three_spin_a(t_block *sta, t_stacks stacks)
 {
 	if (sta[0].parti > sta[1].parti)
 		sa(sta);
-	if (sta[0].parti < sta[1].parti && sta[0].parti > sta[2].parti
-		|| sta[0].parti < sta[1].parti && sta[1].parti > sta[2].parti)
+	if ((sta[0].parti < sta[1].parti && sta[0].parti > sta[2].parti)
+		|| (sta[0].parti < sta[1].parti && sta[1].parti > sta[2].parti))
 	{
 		ra(sta, &stacks);
 		sa(sta);

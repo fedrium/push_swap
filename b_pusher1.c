@@ -15,7 +15,6 @@
 void	bsa(t_block *sta, t_stacks stacks)
 {
 	int	temp;
-	int	len;
 
 	if (stacks.anum > 1)
 	{
@@ -28,7 +27,6 @@ void	bsa(t_block *sta, t_stacks stacks)
 void	bsb(t_block *stb, t_stacks stacks)
 {
 	int	temp;
-	int	len;
 
 	if (stacks.bnum > 1)
 	{

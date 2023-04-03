@@ -15,7 +15,6 @@
 void	sa(t_block *sta)
 {
 	int	temp;
-	int	len;
 
 	temp = sta[0].parti;
 	sta[0].parti = sta[1].parti;
@@ -26,7 +25,6 @@ void	sa(t_block *sta)
 void	sb(t_block *stb)
 {
 	int	temp;
-	int	len;
 
 	temp = stb[0].parti;
 	stb[0].parti = stb[1].parti;
