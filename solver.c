@@ -6,20 +6,11 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:31:03 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 18:02:20 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:33:44 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ps(t_block *sta, t_block *stb, t_stacks stacks)
-{
-	for (int i = 0; i < stacks.anum; i++)
-	{
-		printf("sta: %li stb: %li\n", sta[i].parti, stb[i].parti);
-	}
-	printf("\n");
-}
 
 void	three_spin(t_block *sta, t_block *stb, t_stacks stacks)
 {
@@ -72,8 +63,7 @@ void	solver_sta(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			i--;
 		}
 		rotator_a(sta, rotated, stacks);
-		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
-		solver_stb(sta, stb, (pushed / 2), stacks);
+		solvehelper(sta, stb, pushed, stacks);
 	}
 }
 
@@ -102,8 +92,7 @@ void	solver_stb(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 			i--;
 		}
 		rotator_b(stb, rotated, stacks);
-		solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
-		solver_stb(sta, stb, (pushed / 2), stacks);
+		solvehelper(sta, stb, pushed, stacks);
 	}
 }
 

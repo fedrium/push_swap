@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:59:43 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/08/19 14:35:21 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/04 13:21:57 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*str;
-	char	*temp;
 
 	i = 0;
 	if (s == 0)

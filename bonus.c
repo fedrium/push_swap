@@ -6,20 +6,20 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:23:57 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 15:42:23 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:48:11 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
+int	converter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks)
 {
 	int	i;
 	int	j;
 
 	i = 1;
 	if (argc == 2)
-		spliter(sta, argc, argv, stacks);
+		spliter_bonus(sta, argc, argv, stacks);
 	else
 	{
 		while (argv[i])
@@ -34,14 +34,13 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 			if (sta[i - 1].parti > 2147483647
 				|| sta[i - 1].parti < -2147483648)
 				return (1);
-			sta[i - 1].n = 0;
 			i++;
 		}
 	}
 	return (0);
 }
 
-int	spliter(t_block *sta, int argc, char **argv, t_stacks *stacks)
+int	spliter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks)
 {
 	char	**array;
 	int		i;
@@ -74,23 +73,27 @@ int	main(int argc, char **argv)
 	t_stacks	stacks;
 	t_block		*sta;
 	t_block		*stb;
+	int			i;
 
-	sta = malloc(sizeof(t_block) * argc);
-	stb = malloc(sizeof(t_block) * argc);
-	stacks.anum = argc - 1;
-	stacks.bnum = 0;
-	if (symbol_check(argc, argv) == 1
-		|| converter(sta, argc, argv, &stacks) == 1
-		|| dupe_check(sta, stacks) == 1)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	getop(sta, stb, stacks);
 	if (argc == 1)
 		return (0);
-	free(sta);
-	free(stb);
+	if (argc > 2)
+	{
+		sta = malloc(sizeof(t_block) * argc);
+		stb = malloc(sizeof(t_block) * argc);
+		if (checking_bonus(sta, argc, &stacks, argv))
+			error_bonus(2, sta, stb);
+	}
+	if (argc == 2)
+	{
+		i = cnt_word(argv[1], ' ') + 1;
+		sta = malloc(sizeof(t_block) * i);
+		stb = malloc(sizeof(t_block) * i);
+		twoargc(argv[1], sta, stb, &stacks);
+	}
+	stacks.bnum = 0;
+	getop(sta, stb, stacks);
+	freer(sta, stb);
 	return (0);
 }
 

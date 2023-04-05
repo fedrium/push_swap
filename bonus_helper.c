@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:41:28 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 15:42:48 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:55:02 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	ok(void)
 	exit(0);
 }
 
-void	error(int x)
+void	error_bonus(int x, t_block *sta, t_block *stb)
 {
+	free(sta);
+	free(stb);
 	if (x == 0)
 	{
 		write(1, "KO\n", 3);
@@ -49,14 +51,14 @@ int	swap_push(t_block *sta, t_block *stb, t_stacks *stacks, char *op)
 	return (0);
 }
 
-void	getophelper(t_block *sta, t_stacks stacks, char *op)
+void	getophelper(t_block *sta, t_block *stb, t_stacks stacks, char *op)
 {
 	if (op == 0 || op[0] == '\0')
 	{
 		if (order_check_bonus(sta, stacks.anum) == 0)
 			ok();
 		else
-			error(0);
+			error_bonus(0, sta, stb);
 	}
 }
 
@@ -67,7 +69,7 @@ void	getop(t_block *sta, t_block *stb, t_stacks stacks)
 	while (1)
 	{
 		op = get_next_line(0);
-		getophelper(sta, stacks, op);
+		getophelper(sta, stb, stacks, op);
 		if (!ft_strncmp(op, "ra", 3))
 			ra(sta, &stacks);
 		else if (!ft_strncmp(op, "rb", 3))
@@ -81,7 +83,7 @@ void	getop(t_block *sta, t_block *stb, t_stacks stacks)
 		else if (!ft_strncmp(op, "rrr", 4))
 			rrr(sta, stb, stacks);
 		else if (swap_push(sta, stb, &stacks, op) == 1)
-			error (1);
+			error_bonus(1, sta, stb);
 		free(op);
 	}
 }

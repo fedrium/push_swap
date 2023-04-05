@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:21:30 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 17:36:37 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:58:19 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,12 @@
 # include <stdio.h>
 
 typedef struct s_stacks {
-	int	*sta;
-	int	*stb;
 	int	anum;
 	int	bnum;
 	int	median;
 }				t_stacks;
 
 typedef struct s_block {
-	int		n;
 	long	parti;
 }				t_block;
 
@@ -38,12 +35,18 @@ int		solve_check(t_stacks *stacks, t_block *sta);
 int		median_finder_a(t_block *sta, int pushed);
 int		median_finder_b(t_block *stb, int pushed);
 int		dupe_check(t_block *sta, t_stacks stacks);
-int		symbol_check(int argc, char **argv);
+int		symbol_check(char **argv);
 int		spliter(t_block *sta, char *str, t_stacks *stacks);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		order_check_bonus(t_block *sta, int anum);
 int		cnt_word(char const *str, char c);
 int		symbol_check_two(char **array);
+int		spliter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks);
+int		spliter(t_block *sta, char *str, t_stacks *stacks);
+int		converter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks);
+int		converter(t_block *sta, char **argv, t_stacks *stacks);
+int		checking_bonus(t_block *sta, int argc, t_stacks *stacks, char **argv);
+int		checking(t_block *sta, t_stacks stacks, char **argv);
 
 long	ft_atoi(char *str);
 
@@ -78,7 +81,14 @@ void	solverbh(t_block *sta, t_block *stb, t_stacks stacks, int pushed);
 void	ok(void);
 void	median_helper(int *temp, int temptwo, int pushed);
 void	ps(t_block *sta, t_block *stb, t_stacks stacks);
-void	twoargc(char *str, t_block *sta, t_block *stb, t_stacks stacks);
+void	twoargc(char *str, t_block *sta, t_block *stb, t_stacks *stacks);
 void	error(t_block *sta, t_block *stb);
+void	error_bonus(int x, t_block *sta, t_block *stb);
+void	error(t_block *sta, t_block *stb);
+void	freeing(char **array);
+void	solvehelper(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
+void	freer(t_block *sta, t_block *stb);
+void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks);
+void	oneargc(t_block *sta, t_block *stb);
 
 #endif

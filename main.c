@@ -6,13 +6,13 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:11:30 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 18:00:58 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:04:22 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
+int	converter(t_block *sta, char **argv, t_stacks *stacks)
 {
 	int	i;
 	int	j;
@@ -31,18 +31,9 @@ int	converter(t_block *sta, int argc, char **argv, t_stacks *stacks)
 		if (sta[i - 1].parti > 2147483647
 			|| sta[i - 1].parti < -2147483648)
 			return (1);
-		sta[i - 1].n = 0;
 		i++;
 	}
 	return (0);
-}
-
-void	error(t_block *sta, t_block *stb)
-{
-	free(sta);
-	free(stb);
-	write(2, "Error\n", 6);
-	exit(0);
 }
 
 void	oneargc(t_block *sta, t_block *stb)
@@ -52,60 +43,52 @@ void	oneargc(t_block *sta, t_block *stb)
 	exit(0);
 }
 
+void	checking(t_block *sta, t_block *stb, t_stacks stacks, char **argv)
+{
+	if (symbol_check(argv) == 1
+		|| converter(sta, argv, &stacks) == 1
+		|| dupe_check(sta, stacks) == 1)
+		error(sta, stb);
+}
+
+void	freer(t_block *sta, t_block *stb)
+{
+	free(sta);
+	free(stb);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stacks	stacks;
 	t_block		*sta;
 	t_block		*stb;
-	int			pushed;
+	int			i;
 
-	sta = malloc(sizeof(t_block) * argc);
-	stb = malloc(sizeof(t_block) * argc);
-	stacks.anum = argc - 1;
-	stacks.bnum = 0;
-	if (argc == 2)
-		twoargc(argv[1], sta, stb, stacks);
-	else
+	if (argc > 2)
 	{
-		if (symbol_check(argc, argv) == 1
-			|| converter(sta, argc, argv, &stacks) == 1
-			|| dupe_check(sta, stacks) == 1)
-				error(sta, stb);
+		sta = malloc(sizeof(t_block) * argc);
+		stb = malloc(sizeof(t_block) * argc);
+		stacks.anum = argc - 1;
+		checking(sta, stacks, argv);
 	}
-	pushed = stacks.anum;
+	stacks.bnum = 0;
 	if (argc == 1)
 		oneargc(sta, stb);
-	solver_sta(sta, stb, pushed, stacks);
+	if (argc == 2)
+	{
+		i = cnt_word(argv[1], ' ') + 1;
+		sta = malloc(sizeof(t_block) * i);
+		stb = malloc(sizeof(t_block) * i);
+		twoargc(argv[1], sta, stb, &stacks);
+	}
+	solver_sta(sta, stb, stacks.anum, stacks);
 	free(sta);
 	free(stb);
 	return (0);
 }
 
-int	spliter(t_block *sta, char *str, t_stacks *stacks)
+void	solvehelper(t_block *sta, t_block *stb, int pushed, t_stacks stacks)
 {
-	char	**array;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	printf("working");
-	array = ft_split(str, ' ');
-	while (array[i])
-	{
-		while (array[i][j])
-		{
-			if (ft_isdigit(array[i][j]) == 1)
-				return (1);
-			j++;
-		}
-		sta[i].parti = ft_atoi(array[i]);
-		if (sta[i].parti > 2147483647
-			|| sta[i].parti < -2147483648)
-			return (1);
-		i++;
-	}
-	free(array);
-	stacks->anum = i;
-	return (0);
+	solver_sta(sta, stb, (pushed / 2) + (pushed % 2), stacks);
+	solver_stb(sta, stb, (pushed / 2), stacks);
 }

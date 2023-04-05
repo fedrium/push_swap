@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:23:25 by cyu-xian          #+#    #+#             */
-/*   Updated: 2023/04/02 15:25:28 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:07:40 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,12 @@ int	dupe_check(t_block *sta, t_stacks stacks)
 	return (0);
 }
 
-int	symbol_check(int argc, char **argv)
+int	symbol_check(char **argv)
 {
 	int	i;
 	int	j;
 	int	neg;
 
-	(void)argc;
 	i = 1;
 	while (argv[i])
 	{
