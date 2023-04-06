@@ -65,16 +65,15 @@ void	threesolve(t_block *sta, t_stacks stacks)
 		ra(sta, &stacks);
 	if (sta[0].parti > sta[1].parti)
 		sa(sta);
-	
 }
 
 void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks)
 {
 	if (argc == 1)
 		oneargc(sta, stb);
-	if (argc == 6)
+	else if (argc == 6)
 		fivesolve(sta, stb, stacks);
-	if (argc == 4)
+	else if (argc == 4)
 		threesolve(sta, stacks);
 	else
 		solver_sta(sta, stb, stacks.anum, stacks);
