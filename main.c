@@ -38,8 +38,6 @@ int	converter(t_block *sta, char **argv, t_stacks *stacks)
 
 void	oneargc(t_block *sta, t_block *stb)
 {
-	free(sta);
-	free(stb);
 	exit(0);
 }
 
@@ -67,8 +65,7 @@ int	main(int argc, char *argv[])
 		twoargc(argv[1], sta, stb, &stacks);
 	}
 	argc_check(argc, sta, stb, stacks);
-	free(sta);
-	free(stb);
+	freer(sta, stb);
 	return (0);
 }
 

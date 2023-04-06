@@ -45,13 +45,8 @@ void	fivesolve(t_block *sta, t_block *stb, t_stacks stacks)
 	}
 	if (stacks.anum == 3)
 	{
-		solverah(sta, stacks, 3);
+		threesolve(sta, stacks);
 		solverbh(sta, stb, stacks, 2);
-	}
-	else
-	{
-		solverah(sta, stacks, 2);
-		solverbh(sta, stb, stacks, 3);	
 	}
 }
 

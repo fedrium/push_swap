@@ -92,5 +92,6 @@ void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks);
 void	oneargc(t_block *sta, t_block *stb);
 void	fivesolve(t_block *sta, t_block *stb, t_stacks stacks);
 void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks);
+void	threesolve(t_block *sta, t_stacks stacks);
 
 #endif
