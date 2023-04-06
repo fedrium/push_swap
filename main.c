@@ -43,37 +43,22 @@ void	oneargc(t_block *sta, t_block *stb)
 	exit(0);
 }
 
-void	checking(t_block *sta, t_block *stb, t_stacks stacks, char **argv)
-{
-	if (symbol_check(argv) == 1
-		|| converter(sta, argv, &stacks) == 1
-		|| dupe_check(sta, stacks) == 1)
-		error(sta, stb);
-}
-
-void	freer(t_block *sta, t_block *stb)
-{
-	free(sta);
-	free(stb);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stacks	stacks;
 	t_block		*sta;
 	t_block		*stb;
 	int			i;
+	int j;
 
 	if (argc > 2)
 	{
 		sta = malloc(sizeof(t_block) * argc);
 		stb = malloc(sizeof(t_block) * argc);
-		stacks.anum = argc - 1;
-		checking(sta, stacks, argv);
+		if (checking(sta, argc, &stacks, argv))
+			error(sta, stb);
 	}
 	stacks.bnum = 0;
-	if (argc == 1)
-		oneargc(sta, stb);
 	if (argc == 2)
 	{
 		i = cnt_word(argv[1], ' ') + 1;
@@ -81,7 +66,7 @@ int	main(int argc, char *argv[])
 		stb = malloc(sizeof(t_block) * i);
 		twoargc(argv[1], sta, stb, &stacks);
 	}
-	solver_sta(sta, stb, stacks.anum, stacks);
+	argc_check(argc, sta, stb, stacks);
 	free(sta);
 	free(stb);
 	return (0);

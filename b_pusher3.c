@@ -26,10 +26,10 @@ void	freer(t_block *sta, t_block *stb)
 
 int	checking_bonus(t_block *sta, int argc, t_stacks *stacks, char **argv)
 {
+	stacks->anum = argc - 1;
 	if (symbol_check(argv) == 1
 		|| converter_bonus(sta, argc, argv, stacks) == 1
 		|| dupe_check(sta, *stacks) == 1)
 		return (1);
-	stacks->anum = argc - 1;
 	return (0);
 }
