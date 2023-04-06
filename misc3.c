@@ -16,7 +16,7 @@ int	checking(t_block *sta, int argc, t_stacks *stacks, char **argv)
 {
 	stacks->anum = argc - 1;
 	if (symbol_check(argv) == 1
-		|| converter(sta, argv, stacks) == 1
+		|| converter(sta, argv) == 1
 		|| dupe_check(sta, *stacks) == 1)
 		return (1);
 	return (0);
@@ -64,6 +64,7 @@ void	threesolve(t_block *sta, t_stacks stacks)
 
 void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks)
 {
+	solve_check(&stacks, sta);
 	if (argc == 1)
 		oneargc(sta, stb);
 	else if (argc == 6)

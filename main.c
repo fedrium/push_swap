@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	converter(t_block *sta, char **argv, t_stacks *stacks)
+int	converter(t_block *sta, char **argv)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ int	converter(t_block *sta, char **argv, t_stacks *stacks)
 	return (0);
 }
 
-void	oneargc(t_block *sta, t_block *stb)
+void	oneargc()
 {
 	exit(0);
 }
@@ -47,7 +47,6 @@ int	main(int argc, char *argv[])
 	t_block		*sta;
 	t_block		*stb;
 	int			i;
-	int j;
 
 	if (argc > 2)
 	{
@@ -64,7 +63,7 @@ int	main(int argc, char *argv[])
 		stb = malloc(sizeof(t_block) * i);
 		twoargc(argv[1], sta, stb, &stacks);
 	}
-	argc_check(argc, sta, stb, stacks);
+	argc_check(stacks.anum + 1, sta, stb, stacks);
 	freer(sta, stb);
 	return (0);
 }

@@ -33,11 +33,11 @@ int	solve_check(t_stacks *stacks, t_block *sta)
 	i = 0;
 	while (i < stacks->anum - 1)
 	{
-		if (sta[i].parti < sta[i + 1].parti)
+		if (sta[i].parti > sta[i + 1].parti)
 			return (0);
 		i++;
 	}
-	return (1);
+	exit (0);
 }
 
 int	dupe_check(t_block *sta, t_stacks stacks)

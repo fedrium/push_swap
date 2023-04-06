@@ -44,7 +44,7 @@ int		symbol_check_two(char **array);
 int		spliter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks);
 int		spliter(t_block *sta, char *str, t_stacks *stacks);
 int		converter_bonus(t_block *sta, int argc, char **argv, t_stacks *stacks);
-int		converter(t_block *sta, char **argv, t_stacks *stacks);
+int		converter(t_block *sta, char **argv);
 int		checking_bonus(t_block *sta, int argc, t_stacks *stacks, char **argv);
 int		checking(t_block *sta, int argc, t_stacks *stacks, char **argv);
 
@@ -89,7 +89,7 @@ void	freeing(char **array);
 void	solvehelper(t_block *sta, t_block *stb, int pushed, t_stacks stacks);
 void	freer(t_block *sta, t_block *stb);
 void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks);
-void	oneargc(t_block *sta, t_block *stb);
+void	oneargc();
 void	fivesolve(t_block *sta, t_block *stb, t_stacks stacks);
 void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks);
 void	threesolve(t_block *sta, t_stacks stacks);

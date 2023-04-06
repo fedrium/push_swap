@@ -46,9 +46,6 @@ void	error(t_block *sta, t_block *stb)
 
 void	twoargc(char *str, t_block *sta, t_block *stb, t_stacks *stacks)
 {
-	int	len;
-
-	stacks->anum = len - 1;
 	if (spliter(sta, str, stacks) == 1)
 		error(sta, stb);
 	if (dupe_check(sta, *stacks) == 1)
@@ -85,10 +82,8 @@ int	spliter(t_block *sta, char *str, t_stacks *stacks)
 void	freeing(char **array)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (array[i] != 0)
 	{
 		free(array[i]);

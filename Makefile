@@ -12,7 +12,7 @@ BNAME		= checker
 
 CC			= gcc
 
-CFLAGS		= -fsanitize=address -g
+CFLAGS		= -Werror -Wextra -Wall
 
 RM			= rm -rf
 
