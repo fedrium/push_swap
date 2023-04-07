@@ -66,7 +66,7 @@ void	argc_check(int argc, t_block *sta, t_block *stb, t_stacks stacks)
 {
 	solve_check(&stacks, sta);
 	if (argc == 1)
-		oneargc(sta, stb);
+		oneargc();
 	else if (argc == 6)
 		fivesolve(sta, stb, stacks);
 	else if (argc == 4)
