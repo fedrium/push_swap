@@ -12,7 +12,7 @@ BNAME		= checker
 
 CC			= gcc
 
-CFLAGS		= -Werror -Wextra -Wall
+CFLAGS		= -Wall -Wextra -Werror
 
 RM			= rm -rf
 

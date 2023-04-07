@@ -52,6 +52,8 @@ void	fivesolve(t_block *sta, t_block *stb, t_stacks stacks)
 
 void	threesolve(t_block *sta, t_stacks stacks)
 {
+	if (sta[0].parti > sta[1].parti && sta[0].parti > sta[2].parti)
+		ra(sta, &stacks);
 	if (sta[1].parti > sta[0].parti && sta[1].parti > sta[2].parti)
 		rra(sta, &stacks);
 	if (sta[0].parti > sta[1].parti)

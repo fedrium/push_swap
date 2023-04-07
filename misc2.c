@@ -89,4 +89,5 @@ void	freeing(char **array)
 		free(array[i]);
 		i++;
 	}
+	free(array);
 }
