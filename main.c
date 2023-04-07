@@ -36,7 +36,7 @@ int	converter(t_block *sta, char **argv)
 	return (0);
 }
 
-void	oneargc()
+void	oneargc(void)
 {
 	exit(0);
 }
